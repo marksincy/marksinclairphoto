@@ -1,0 +1,482 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2870
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 <!DOCTYPE html>\
+<html lang="en">\
+<head>\
+  <meta charset="UTF-8" />\
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />\
+  <title>Lines in the Sky | Mark Sinclair Photography</title>\
+\
+  <link rel="preconnect" href="https://fonts.googleapis.com" />\
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />\
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />\
+\
+  <style>\
+    :root \{\
+      --bg: #0d0e11;\
+      --surface: #14161c;\
+      --card-bg: #1a1d24;\
+      --text: #f0f2f5;\
+      --text-muted: #8b92a1;\
+      --text-body: #c7cbd4;\
+      --accent: #d4a373;\
+      --border: rgba(255, 255, 255, 0.08);\
+      --max-width-text: 740px;\
+      --max-width-wide: 1100px;\
+      --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);\
+    \}\
+\
+    * \{\
+      margin: 0;\
+      padding: 0;\
+      box-sizing: border-box;\
+    \}\
+\
+    body \{\
+      background-color: var(--bg);\
+      color: var(--text-body);\
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;\
+      font-size: 1.1rem;\
+      line-height: 1.8;\
+      -webkit-font-smoothing: antialiased;\
+    \}\
+\
+    header \{\
+      position: sticky;\
+      top: 0;\
+      z-index: 100;\
+      backdrop-filter: blur(12px);\
+      background-color: rgba(13, 14, 17, 0.85);\
+      border-bottom: 1px solid var(--border);\
+    \}\
+\
+    .nav-container \{\
+      max-width: var(--max-width-wide);\
+      margin: 0 auto;\
+      padding: 1.25rem 2rem;\
+      display: flex;\
+      justify-content: space-between;\
+      align-items: center;\
+    \}\
+\
+    .logo \{\
+      font-family: 'Playfair Display', Georgia, serif;\
+      font-size: 1.25rem;\
+      font-weight: 600;\
+      letter-spacing: 0.05em;\
+      text-decoration: none;\
+      color: var(--text);\
+      text-transform: lowercase;\
+    \}\
+\
+    .logo span \{\
+      color: var(--accent);\
+    \}\
+\
+    .back-link \{\
+      color: var(--text-muted);\
+      text-decoration: none;\
+      font-size: 0.85rem;\
+      letter-spacing: 0.05em;\
+      display: flex;\
+      align-items: center;\
+      gap: 0.5rem;\
+      transition: var(--transition);\
+    \}\
+\
+    .back-link:hover \{\
+      color: var(--accent);\
+    \}\
+\
+    .article-header \{\
+      max-width: var(--max-width-text);\
+      margin: 4.5rem auto 2.5rem;\
+      padding: 0 1.5rem;\
+      text-align: center;\
+    \}\
+\
+    .post-category \{\
+      color: var(--accent);\
+      font-size: 0.8rem;\
+      font-weight: 600;\
+      text-transform: uppercase;\
+      letter-spacing: 0.15em;\
+      margin-bottom: 1rem;\
+      display: inline-block;\
+    \}\
+\
+    .article-header h1 \{\
+      font-family: 'Playfair Display', Georgia, serif;\
+      font-size: clamp(2.4rem, 5vw, 3.6rem);\
+      font-weight: 400;\
+      color: var(--text);\
+      line-height: 1.2;\
+      letter-spacing: -0.02em;\
+      margin-bottom: 1.25rem;\
+    \}\
+\
+    .post-meta \{\
+      font-size: 0.85rem;\
+      color: var(--text-muted);\
+      display: flex;\
+      justify-content: center;\
+      align-items: center;\
+      gap: 1.25rem;\
+    \}\
+\
+    .hero-image-container \{\
+      max-width: var(--max-width-wide);\
+      margin: 2.5rem auto 4rem;\
+      padding: 0 1.5rem;\
+    \}\
+\
+    .hero-image-wrapper \{\
+      position: relative;\
+      border-radius: 8px;\
+      overflow: hidden;\
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);\
+      background-color: var(--surface);\
+      cursor: pointer;\
+    \}\
+\
+    .hero-image-wrapper img \{\
+      width: 100%;\
+      height: auto;\
+      max-height: 75vh;\
+      object-fit: cover;\
+      display: block;\
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);\
+    \}\
+\
+    .hero-image-wrapper:hover img \{\
+      transform: scale(1.02);\
+    \}\
+\
+    .image-caption \{\
+      margin-top: 0.75rem;\
+      font-size: 0.82rem;\
+      color: var(--text-muted);\
+      text-align: center;\
+      font-style: italic;\
+    \}\
+\
+    .article-content \{\
+      max-width: var(--max-width-text);\
+      margin: 0 auto;\
+      padding: 0 1.5rem;\
+    \}\
+\
+    .article-content p \{\
+      margin-bottom: 1.75rem;\
+      font-weight: 300;\
+    \}\
+\
+    .article-content p.lead \{\
+      font-size: 1.3rem;\
+      line-height: 1.7;\
+      color: var(--text);\
+      font-weight: 300;\
+    \}\
+\
+    .article-content h2 \{\
+      font-family: 'Playfair Display', Georgia, serif;\
+      font-size: 1.9rem;\
+      font-weight: 400;\
+      color: var(--text);\
+      margin: 3rem 0 1.25rem;\
+      letter-spacing: -0.01em;\
+    \}\
+\
+    .media-block \{\
+      max-width: var(--max-width-wide);\
+      margin: 3.5rem -2rem;\
+      padding: 0 1rem;\
+    \}\
+\
+    @media (max-width: 1100px) \{\
+      .media-block \{\
+        margin: 3rem 0;\
+        padding: 0;\
+      \}\
+    \}\
+\
+    .photo-frame \{\
+      border-radius: 6px;\
+      overflow: hidden;\
+      background-color: var(--surface);\
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);\
+      cursor: pointer;\
+    \}\
+\
+    .photo-frame img \{\
+      width: 100%;\
+      height: auto;\
+      display: block;\
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);\
+    \}\
+\
+    .photo-frame:hover img \{\
+      transform: scale(1.02);\
+    \}\
+\
+    .photo-grid-duo \{\
+      display: grid;\
+      grid-template-columns: 1fr 1fr;\
+      gap: 1.5rem;\
+    \}\
+\
+    @media (max-width: 768px) \{\
+      .photo-grid-duo \{\
+        grid-template-columns: 1fr;\
+        gap: 1.25rem;\
+      \}\
+    \}\
+\
+    blockquote \{\
+      border-left: 2px solid var(--accent);\
+      padding: 0.75rem 0 0.75rem 1.75rem;\
+      margin: 2.5rem 0;\
+      font-family: 'Playfair Display', Georgia, serif;\
+      font-style: italic;\
+      font-size: 1.25rem;\
+      color: var(--text);\
+      line-height: 1.6;\
+    \}\
+\
+    .meta-box \{\
+      background-color: var(--surface);\
+      border: 1px solid var(--border);\
+      border-radius: 8px;\
+      padding: 1.75rem 2rem;\
+      margin: 4rem 0 2rem;\
+    \}\
+\
+    .meta-box h3 \{\
+      font-size: 0.85rem;\
+      text-transform: uppercase;\
+      letter-spacing: 0.12em;\
+      color: var(--accent);\
+      margin-bottom: 1rem;\
+    \}\
+\
+    .meta-box ul \{\
+      list-style: none;\
+      display: grid;\
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));\
+      gap: 0.75rem;\
+      font-size: 0.9rem;\
+      color: var(--text-muted);\
+    \}\
+\
+    .meta-box ul li strong \{\
+      color: var(--text);\
+      font-weight: 400;\
+    \}\
+\
+    .lightbox \{\
+      position: fixed;\
+      inset: 0;\
+      background: rgba(8, 9, 11, 0.96);\
+      backdrop-filter: blur(15px);\
+      z-index: 1000;\
+      display: none;\
+      align-items: center;\
+      justify-content: center;\
+      padding: 2rem;\
+    \}\
+\
+    .lightbox.active \{\
+      display: flex;\
+    \}\
+\
+    .lightbox-content \{\
+      position: relative;\
+      max-width: 90vw;\
+      max-height: 88vh;\
+      display: flex;\
+      flex-direction: column;\
+      align-items: center;\
+    \}\
+\
+    .lightbox-content img \{\
+      max-width: 100%;\
+      max-height: 80vh;\
+      object-fit: contain;\
+      border-radius: 4px;\
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8);\
+    \}\
+\
+    .lightbox-caption \{\
+      margin-top: 1rem;\
+      text-align: center;\
+      color: var(--text-muted);\
+      font-size: 0.9rem;\
+      font-style: italic;\
+    \}\
+\
+    .lightbox-close \{\
+      position: absolute;\
+      top: 2rem;\
+      right: 2rem;\
+      color: var(--text-muted);\
+      font-size: 2rem;\
+      cursor: pointer;\
+      background: none;\
+      border: none;\
+      line-height: 1;\
+      transition: var(--transition);\
+    \}\
+\
+    .lightbox-close:hover \{\
+      color: #fff;\
+    \}\
+\
+    .post-nav \{\
+      max-width: var(--max-width-text);\
+      margin: 4rem auto 0;\
+      padding: 2.5rem 1.5rem;\
+      border-top: 1px solid var(--border);\
+      display: flex;\
+      justify-content: space-between;\
+      align-items: center;\
+      font-size: 0.9rem;\
+    \}\
+\
+    .post-nav a \{\
+      color: var(--text-muted);\
+      text-decoration: none;\
+      transition: var(--transition);\
+    \}\
+\
+    .post-nav a:hover \{\
+      color: var(--accent);\
+    \}\
+\
+    footer \{\
+      border-top: 1px solid var(--border);\
+      padding: 3rem 2rem;\
+      text-align: center;\
+      color: var(--text-muted);\
+      font-size: 0.85rem;\
+      margin-top: 4rem;\
+    \}\
+  </style>\
+</head>\
+<body>\
+\
+  <header>\
+    <div class="nav-container">\
+      <a href="index.html" class="logo">mark sinclair<span>.</span>photo</a>\
+      <a href="blog.html" class="back-link">&larr; Back to Journal</a>\
+    </div>\
+  </header>\
+\
+  <article>\
+    <div class="article-header">\
+      <span class="post-category">Urban &amp; Architecture</span>\
+      <h1>Lines in the Sky</h1>\
+      <div class="post-meta">\
+        <span>Sydney CBD &amp; Barangaroo</span>\
+        <span>&bull;</span>\
+        <span>Fuji X-T5 &amp; 23mm</span>\
+        <span>&bull;</span>\
+        <span>4 min read</span>\
+      </div>\
+    </div>\
+\
+    <div class="hero-image-container">\
+      <div class="hero-image-wrapper photo-frame" onclick="openLightbox('https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1800&q=85', 'Crown Sydney rising through Barangaroo morning light.')">\
+        <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1400&q=85" alt="Lines in the sky architecture" />\
+      </div>\
+      <p class="image-caption">Crown Sydney rising through Barangaroo morning light.</p>\
+    </div>\
+\
+    <div class="article-content">\
+      <p class="lead">\
+        Walking through Barangaroo on an overcast morning completely changes how light bounces off glass and steel. There is a geometric rhythm to the high-rise corridors that only reveals itself when you deliberately stop looking at street level and point the lens skyward.\
+      </p>\
+\
+      <p>\
+        The sheer verticality of Crown and the neighbouring towers creates sharp, mathematical silhouettes against a soft grey sky. When shooting architecture on street walks, perspective distortion is both the biggest challenge and the most powerful compositional tool.\
+      </p>\
+\
+      <blockquote>\
+        "The eye seeks geometry in chaos. In a city of millions, looking up offers a quiet, abstract stillness that the crowded pavements never provide."\
+      </blockquote>\
+\
+      <h2>Reflections &amp; Perspective</h2>\
+      <p>\
+        By moving tightly against the building perimeters and shooting upwards with the 23mm, parallel architectural lines converge into dramatic focal points. The overcast cloud layer acts as a massive softbox, removing harsh specular glare and giving the reflective glass panels deep tonal gradients.\
+      </p>\
+\
+      <div class="media-block">\
+        <div class="photo-grid-duo">\
+          <div>\
+            <div class="photo-frame" onclick="openLightbox('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=85', 'Glass facade convergence, Sydney.')">\
+              <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=85" alt="Glass facade convergence" />\
+            </div>\
+            <p class="image-caption">Converging vertical planes.</p>\
+          </div>\
+          <div>\
+            <div class="photo-frame" onclick="openLightbox('https://images.unsplash.com/photo-1477959858617-67f30bc75b82?auto=format&fit=crop&w=1200&q=85', 'Steel and shadows on Martin Place.')">\
+              <img src="https://images.unsplash.com/photo-1477959858617-67f30bc75b82?auto=format&fit=crop&w=800&q=85" alt="Steel and shadows on Martin Place" />\
+            </div>\
+            <p class="image-caption">Martin Place intersection reflections.</p>\
+          </div>\
+        </div>\
+      </div>\
+\
+      <div class="meta-box">\
+        <h3>Photo Walk Notes</h3>\
+        <ul>\
+          <li><strong>Location:</strong> Barangaroo &amp; Martin Place, Sydney</li>\
+          <li><strong>Camera:</strong> Fujifilm X-T5</li>\
+          <li><strong>Lens:</strong> Fujinon XF 23mm f/1.4 R LM WR</li>\
+          <li><strong>Film Simulation:</strong> Acros+R / Classic Chrome base</li>\
+        </ul>\
+      </div>\
+    </div>\
+  </article>\
+\
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">\
+    <button class="lightbox-close" onclick="closeLightbox()">&times;</button>\
+    <div class="lightbox-content">\
+      <img id="lightboxImg" src="" alt="Full preview" />\
+      <div class="lightbox-caption" id="lightboxCaption"></div>\
+    </div>\
+  </div>\
+\
+  <footer>\
+    <p>&copy; 2026 Mark Sinclair Photography. Published via GitHub Pages.</p>\
+  </footer>\
+\
+  <script>\
+    const lightbox = document.getElementById('lightbox');\
+    const lightboxImg = document.getElementById('lightboxImg');\
+    const lightboxCaption = document.getElementById('lightboxCaption');\
+\
+    function openLightbox(src, caption) \{\
+      lightboxImg.src = src;\
+      lightboxCaption.textContent = caption || '';\
+      lightbox.classList.add('active');\
+      document.body.style.overflow = 'hidden';\
+    \}\
+\
+    function closeLightbox(e) \{\
+      if (!e || e.target === lightbox || e.target.classList.contains('lightbox-close')) \{\
+        lightbox.classList.remove('active');\
+        document.body.style.overflow = 'auto';\
+      \}\
+    \}\
+\
+    document.addEventListener('keydown', (e) => \{\
+      if (e.key === 'Escape') closeLightbox();\
+    \});\
+  </script>\
+</body>\
+</html>}

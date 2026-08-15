@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fiji | Mark Sinclair Photography</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css" />
+</head>
+<body>
+
+  <header>
+    <div class="nav-container">
+      <a href="../../index.html" class="logo">mark sinclair<span>.</span>photo</a>
+      <a href="../../index.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.85rem; letter-spacing: 0.05em;">← Return Home</a>
+    </div>
+  </header>
+
+  <section class="page-header">
+    <a href="../../index.html" class="breadcrumbs">Travel</a>
+    <h1>Fiji</h1>
+    <p>Island documentary work, turquoise waters, and Pacific light.</p>
+  </section>
+
+  <main class="gallery-container">
+    <div class="gallery-grid">
+      <!-- Add your images below -->
+    </div>
+  </main>
+
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightbox()">×</button>
+    <div class="lightbox-content">
+      <img id="lightboxImg" src="" alt="Full preview" />
+      <div class="lightbox-caption">
+        <h4 id="lightboxTitle"></h4>
+        <p id="lightboxSub"></p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 Mark Sinclair Photography. Hosted on GitHub Pages.</p>
+  </footer>
+
+  <script>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxTitle = document.getElementById('lightboxTitle');
+    const lightboxSub = document.getElementById('lightboxSub');
+
+    function openLightbox(src, title, sub) {
+      lightboxImg.src = src;
+      lightboxTitle.textContent = title;
+      lightboxSub.textContent = sub;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(e) {
+      if (!e || e.target === lightbox || e.target.classList.contains('lightbox-close')) {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    }
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+</body>
+</html>

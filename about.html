@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Mark Sinclair Photography</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .about-container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+      margin-bottom: 5rem;
+    }
+
+    @media (max-width: 768px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+    }
+
+    .about-portrait {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+    }
+
+    .about-portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .about-bio h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.25;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-bio p {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: #c7cbd4;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-bio blockquote {
+      border-left: 2px solid var(--accent);
+      padding: 0.5rem 0 0.5rem 1.5rem;
+      margin: 2rem 0;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--text);
+    }
+
+    /* --- Details & Gear Matrix --- */
+    .details-matrix {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-bottom: 5rem;
+    }
+
+    .matrix-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+    }
+
+    .matrix-card h3 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .matrix-card ul {
+      list-style: none;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    .matrix-card ul li strong {
+      color: var(--text);
+      font-weight: 400;
+    }
+
+    /* --- Contact Form --- */
+    .contact-section {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 3rem 2.5rem;
+      max-width: 740px;
+      margin: 0 auto;
+    }
+
+    .contact-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+
+    .contact-section p {
+      color: var(--text-muted);
+      text-align: center;
+      font-size: 0.95rem;
+      font-weight: 300;
+      margin-bottom: 2.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.85rem 1rem;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: var(--transition);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      background-color: rgba(255, 255, 255, 0.03);
+    }
+
+    .submit-btn {
+      width: 100%;
+      background-color: var(--accent);
+      color: var(--bg);
+      border: none;
+      border-radius: 6px;
+      padding: 1rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .submit-btn:hover {
+      background-color: #e0b285;
+      transform: translateY(-1px);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo">mark sinclair<span>.</span>photo</a>
+      <nav>
+        <ul>
+          <li><a href="photo-blog/index.html">Photo Blog</a></li>
+          <li><a href="my-coast-blog/index.html">My Coast Blog</a></li>
+          
+          <li>
+            <a href="#">Central Coast ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="galleries/central-coast/chittaway-bay.html">Chittaway Bay</a></li>
+              <li><a href="galleries/central-coast/copacabana.html">Copacabana</a></li>
+              <li><a href="galleries/central-coast/girrakool.html">Girrakool</a></li>
+              <li><a href="galleries/central-coast/koolewong.html">Koolewong</a></li>
+              <li><a href="galleries/central-coast/morisset.html">Morisset Abandoned Hospital</a></li>
+              <li><a href="galleries/central-coast/mt-wondabyne.html">Mt Wondabyne</a></li>
+              <li><a href="galleries/central-coast/pink-caves.html">Pink Caves</a></li>
+              <li><a href="galleries/central-coast/soldiers-beach.html">Soldiers Beach</a></li>
+              <li><a href="galleries/central-coast/somersby-falls.html">Somersby Falls</a></li>
+              <li><a href="galleries/central-coast/tascott.html">Tascott</a></li>
+              <li><a href="galleries/central-coast/toowoon-bay.html">Toowoon Bay</a></li>
+              <li><a href="galleries/central-coast/woy-woy.html">Woy Woy</a></li>
+              <li><a href="galleries/central-coast/yarramalong.html">Yarramalong</a></li>
+            </ul>
+          </li>
+
+          <li>
+            <a href="#">Travel ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="galleries/travel/england.html">England</a></li>
+              <li><a href="galleries/travel/fiji.html">Fiji</a></li>
+              <li><a href="galleries/travel/france.html">France</a></li>
+              <li><a href="galleries/travel/italy.html">Italy</a></li>
+              <li><a href="galleries/travel/singapore.html">Singapore</a></li>
+            </ul>
+          </li>
+
+          <li>
+            <a href="#">Urban ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="galleries/urban/london.html">London</a></li>
+              <li><a href="galleries/urban/melbourne.html">Melbourne</a></li>
+              <li><a href="galleries/urban/sydney.html">Sydney</a></li>
+              <li><a href="galleries/urban/street-art.html">Street Art</a></li>
+            </ul>
+          </li>
+
+          <li><a href="galleries/architecture.html">Architecture</a></li>
+
+          <li>
+            <a href="#">Natural World ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="galleries/natural-world/flowers.html">Flowers</a></li>
+              <li><a href="galleries/natural-world/birds.html">Birds</a></li>
+            </ul>
+          </li>
+
+          <li>
+            <a href="#">Night ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="galleries/night/astro.html">Astro</a></li>
+              <li><a href="galleries/night/urban.html">Urban</a></li>
+            </ul>
+          </li>
+
+          <li>
+            <a href="#">Events ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="galleries/events/brickman-lego.html">Brickman Lego</a></li>
+              <li><a href="galleries/events/cars-coffee.html">Central Coast Cars & Coffee</a></li>
+            </ul>
+          </li>
+
+          <li>
+            <a href="#">Sport ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="galleries/sport/central-coast-mariners.html">Central Coast Mariners</a></li>
+            </ul>
+          </li>
+
+          <li><a href="about.html" class="active">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="about-container">
+    
+    <div class="about-grid">
+      <div class="about-portrait">
+        <!-- Replace src with your bio photo path -->
+        <img src="images/bio-portrait.jpg" alt="Mark Sinclair" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80'" />
+      </div>
+      
+      <div class="about-bio">
+        <h2>Light, geometry & coastal stillness.</h2>
+        <p>
+          I am a documentary, street, and landscape photographer based on the Central Coast of New South Wales, Australia. My work focuses on finding quiet order within chaotic environments—whether tracking converging light through high-rise corridors or observing tidal textures along the coastline.
+        </p>
+        <blockquote>
+          "Observation is about patience. Giving everyday scenes the breathing room to reveal their underlying geometry."
+        </blockquote>
+        <p>
+          Alongside visual series, I write regular photo essays documenting local walks, film workflows, and regional explorations across the Coast and abroad.
+        </p>
+      </div>
+    </div>
+
+    <div class="details-matrix">
+      <div class="matrix-card">
+        <h3>Gear & Cameras</h3>
+        <ul>
+          <li><strong>Digital:</strong> Fujifilm X-T5</li>
+          <li><strong>Everyday / Street:</strong> Fujifilm X100VI</li>
+          <li><strong>Film:</strong> Olympus OM-1 (35mm)</li>
+          <li><strong>Preferred Stock:</strong> Ilford HP5 Plus, Kodak Tri-X</li>
+        </ul>
+      </div>
+
+      <div class="matrix-card">
+        <h3>Visual Influences</h3>
+        <ul>
+          <li><strong>Daido Moriyama:</strong> High-contrast grain & street rhythm</li>
+          <li><strong>Alex Webb:</strong> Layered light & complex colour</li>
+          <li><strong>Saul Leiter:</strong> Reflections, abstraction & quiet moments</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Free Contact Form hooked via Web3Forms (no server needed) -->
+    <section class="contact-section">
+      <h2>Get in Touch</h2>
+      <p>Have an inquiry regarding prints, projects, or collaborations? Send a note below.</p>
+      
+      <form action="https://api.web3forms.com/submit" method="POST">
+        <!-- Get your free access key at web3forms.com and paste it below -->
+        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+        <input type="hidden" name="subject" value="New Contact Form Submission from marksinclairphoto.com" />
+
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required placeholder="Your name" />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required placeholder="your.email@example.com" />
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required placeholder="Your message..."></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Mark Sinclair Photography. Hosted on GitHub Pages.</p>
+  </footer>
+
+</body>
+</html>
