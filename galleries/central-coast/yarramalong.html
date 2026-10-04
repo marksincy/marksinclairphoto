@@ -3,71 +3,177 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Yarramalong | Mark Sinclair Photography</title>
+  <title>Yarramalong Gallery | Mark Sinclair Photography</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../../styles.css" />
+  <style>
+    :root {
+      --bg: #0d0e11;
+      --card-bg: #14161b;
+      --surface: #1b1e25;
+      --text: #f0f2f5;
+      --text-muted: #8b92a1;
+      --accent: #d4a373;
+      --border: rgba(255, 255, 255, 0.08);
+      --max-width: 1400px;
+      --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+    }
+    header {
+      position: sticky; top: 0; z-index: 100;
+      backdrop-filter: blur(12px);
+      background-color: rgba(13, 14, 17, 0.85);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-container {
+      max-width: var(--max-width); margin: 0 auto;
+      padding: 1.25rem 2rem; display: flex;
+      justify-content: space-between; align-items: center;
+    }
+    .logo {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.35rem; font-weight: 600;
+      text-decoration: none; color: var(--text);
+    }
+    .logo span { color: var(--accent); }
+    nav ul { display: flex; list-style: none; gap: 2rem; }
+    nav a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: var(--transition); }
+    nav a:hover, nav a.active { color: var(--text); }
+    .gallery-header {
+      max-width: var(--max-width); margin: 0 auto;
+      padding: 4.5rem 2rem 2.5rem; display: flex;
+      flex-direction: column; gap: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .breadcrumbs {
+      font-size: 0.8rem; text-transform: uppercase;
+      letter-spacing: 0.1em; color: var(--accent); text-decoration: none;
+    }
+    .gallery-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 4vw, 3.5rem); font-weight: 400;
+    }
+    .gallery-header p { color: var(--text-muted); max-width: 680px; font-size: 1.05rem; }
+    .gallery-container { max-width: var(--max-width); margin: 0 auto; padding: 3.5rem 2rem 6rem; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 2rem;
+    }
+    .photo-card {
+      background-color: var(--card-bg); border-radius: 8px;
+      overflow: hidden; border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+    .photo-card:hover {
+      transform: translateY(-4px); border-color: rgba(255, 255, 255, 0.25);
+    }
+    .img-wrapper { width: 100%; aspect-ratio: 4 / 3; overflow: hidden; background-color: var(--surface); }
+    .img-wrapper img {
+      width: 100%; height: 100%; object-fit: cover;
+      display: block; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .photo-card:hover img { transform: scale(1.03); }
+    .photo-meta {
+      padding: 1.25rem; display: flex;
+      justify-content: space-between; align-items: center;
+    }
+    .photo-meta h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 400; }
+    .photo-gear {
+      font-size: 0.75rem; color: var(--accent);
+      border: 1px solid rgba(212, 163, 115, 0.25);
+      padding: 0.2rem 0.6rem; border-radius: 4px;
+    }
+    /* Lightbox Modal */
+    .lightbox {
+      position: fixed; inset: 0; background: rgba(8, 9, 11, 0.96);
+      backdrop-filter: blur(15px); z-index: 1000; display: none;
+      align-items: center; justify-content: center; padding: 2rem;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox-content { max-width: 90vw; max-height: 88vh; display: flex; flex-direction: column; align-items: center; }
+    .lightbox-content img { max-width: 100%; max-height: 80vh; object-fit: contain; border-radius: 4px; }
+    .lightbox-caption { margin-top: 1rem; text-align: center; }
+    .lightbox-close {
+      position: absolute; top: 2rem; right: 2rem; color: var(--text-muted);
+      font-size: 2rem; cursor: pointer; background: none; border: none;
+    }
+    footer { border-top: 1px solid var(--border); padding: 3rem 2rem; text-align: center; color: var(--text-muted); font-size: 0.85rem; }
+  </style>
 </head>
 <body>
-
   <header>
     <div class="nav-container">
       <a href="../../index.html" class="logo">mark sinclair<span>.</span>photo</a>
-      <a href="../../index.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.85rem; letter-spacing: 0.05em;">← Return Home</a>
+      <nav>
+        <ul>
+          <li><a href="../../index.html">Portfolio</a></li>
+          <li><a href="../../blog.html">Journal</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
-  <section class="page-header">
-    <a href="../../index.html" class="breadcrumbs">Central Coast</a>
+  <section class="gallery-header">
+    <a href="index.html" class="breadcrumbs">&larr; Return to Central Coast Hub</a>
     <h1>Yarramalong</h1>
-    <p>Rural valley pastures, historic churches, and rolling hinterland mist.</p>
+    <p>Coastal landscapes, shoreline geometry, and tidal light studies captured around Yarramalong.</p>
   </section>
 
   <main class="gallery-container">
     <div class="gallery-grid">
-      <!-- Add your images below -->
+      
+      <article class="photo-card" onclick="openLightbox('../../images/central-coast/yarramalong/Yarramalong_completeSinclair.jpg', 'Yarramalong_Completesinclair')">
+        <div class="img-wrapper">
+          <img src="../../images/central-coast/yarramalong/Yarramalong_completeSinclair.jpg" alt="Yarramalong_Completesinclair" loading="lazy" />
+        </div>
+        <div class="photo-meta">
+          <h3>Yarramalong_Completesinclair</h3>
+          <span class="photo-gear">Yarramalong</span>
+        </div>
+      </article>
     </div>
   </main>
 
   <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
-    <button class="lightbox-close" onclick="closeLightbox()">×</button>
+    <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
     <div class="lightbox-content">
-      <img id="lightboxImg" src="" alt="Full preview" />
+      <img id="lightboxImg" src="" alt="Full view" />
       <div class="lightbox-caption">
         <h4 id="lightboxTitle"></h4>
-        <p id="lightboxSub"></p>
       </div>
     </div>
   </div>
-
-  <footer>
-    <p>© 2026 Mark Sinclair Photography. Hosted on GitHub Pages.</p>
-  </footer>
-
   <script>
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightboxImg');
     const lightboxTitle = document.getElementById('lightboxTitle');
-    const lightboxSub = document.getElementById('lightboxSub');
 
-    function openLightbox(src, title, sub) {
+    function openLightbox(src, title) {
       lightboxImg.src = src;
       lightboxTitle.textContent = title;
-      lightboxSub.textContent = sub;
       lightbox.classList.add('active');
       document.body.style.overflow = 'hidden';
     }
-
     function closeLightbox(e) {
       if (!e || e.target === lightbox || e.target.classList.contains('lightbox-close')) {
         lightbox.classList.remove('active');
         document.body.style.overflow = 'auto';
       }
     }
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeLightbox();
-    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
   </script>
+
+
+  <footer>
+    <p>&copy; 2026 Mark Sinclair Photography. Central Coast Series.</p>
+  </footer>
 </body>
 </html>
