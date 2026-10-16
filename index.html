@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mark Sinclair | Photography & Visual Stories</title>
-  
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
@@ -19,7 +18,6 @@
         <ul>
           <li><a href="photo-blog/index.html">Photo Blog</a></li>
           <li><a href="my-coast-blog/index.html">My Coast Blog</a></li>
-          
           <li>
             <a href="#">Central Coast ▾</a>
             <ul class="dropdown-menu">
@@ -38,7 +36,6 @@
               <li><a href="galleries/central-coast/yarramalong.html">Yarramalong</a></li>
             </ul>
           </li>
-
           <li>
             <a href="#">Travel ▾</a>
             <ul class="dropdown-menu">
@@ -49,7 +46,6 @@
               <li><a href="galleries/travel/singapore.html">Singapore</a></li>
             </ul>
           </li>
-
           <li>
             <a href="#">Urban ▾</a>
             <ul class="dropdown-menu">
@@ -59,9 +55,7 @@
               <li><a href="galleries/urban/street-art.html">Street Art</a></li>
             </ul>
           </li>
-
           <li><a href="galleries/architecture.html">Architecture</a></li>
-
           <li>
             <a href="#">Natural World ▾</a>
             <ul class="dropdown-menu">
@@ -69,7 +63,6 @@
               <li><a href="galleries/natural-world/birds.html">Birds</a></li>
             </ul>
           </li>
-
           <li>
             <a href="#">Night ▾</a>
             <ul class="dropdown-menu">
@@ -77,7 +70,6 @@
               <li><a href="galleries/night/urban.html">Urban</a></li>
             </ul>
           </li>
-
           <li>
             <a href="#">Events ▾</a>
             <ul class="dropdown-menu">
@@ -85,14 +77,12 @@
               <li><a href="galleries/events/cars-coffee.html">Central Coast Cars & Coffee</a></li>
             </ul>
           </li>
-
           <li>
             <a href="#">Sport ▾</a>
             <ul class="dropdown-menu">
               <li><a href="galleries/sport/central-coast-mariners.html">Central Coast Mariners</a></li>
             </ul>
           </li>
-
           <li><a href="about.html">About</a></li>
         </ul>
       </nav>
@@ -104,160 +94,54 @@
     <p>Documentary, street, and landscape photography from the NSW Central Coast, Sydney, and travels beyond.</p>
   </section>
 
-  <div class="filter-bar" style="max-width: var(--max-width); margin: 0 auto 2.5rem; padding: 0 2rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
-    <button class="filter-btn active" data-filter="all">All Work</button>
-    <button class="filter-btn" data-filter="central-coast">Central Coast</button>
-    <button class="filter-btn" data-filter="urban">Urban & Street</button>
-    <button class="filter-btn" data-filter="travel">Travel</button>
-    <button class="filter-btn" data-filter="architecture">Architecture</button>
-    <button class="filter-btn" data-filter="natural-world">Natural World</button>
-    <button class="filter-btn" data-filter="night">Night & Astro</button>
-    <button class="filter-btn" data-filter="events">Events</button>
-    <button class="filter-btn" data-filter="sport">Sport</button>
-  </div>
-
   <main class="gallery-container">
-    <div class="gallery-grid" id="galleryGrid">
+    <div class="gallery-grid">
       
-      <article class="photo-card" data-category="central-coast" onclick="openLightbox('images/central-coast/soldiers-beach-1.jpg', 'Soldiers Beach Sunrise', 'Central Coast Series · Fuji X-T5')">
+      <a href="galleries/central-coast/soldiers-beach.html" class="photo-card" style="text-decoration: none; color: inherit;">
         <div class="img-wrapper">
-          <img src="images/central-coast/soldiers-beach-1.jpg" alt="Soldiers Beach Sunrise" onerror="this.src='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80'" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Central Coast" loading="lazy" />
         </div>
         <div class="photo-meta">
           <div>
             <h3>Soldiers Beach</h3>
             <p style="font-size: 0.8rem; color: var(--text-muted);">Norah Head Coastal Shelf</p>
           </div>
-          <span class="photo-gear">Central Coast</span>
+          <span class="photo-gear">Central Coast →</span>
         </div>
-      </article>
+      </a>
 
-      <article class="photo-card" data-category="urban" onclick="openLightbox('images/urban/sydney-1.jpg', 'Lines in the Sky — Barangaroo', 'Sydney CBD Series · 23mm')">
+      <a href="galleries/urban/sydney.html" class="photo-card" style="text-decoration: none; color: inherit;">
         <div class="img-wrapper vertical">
-          <img src="images/urban/sydney-1.jpg" alt="Sydney Architecture" onerror="this.src='https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80'" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80" alt="Urban & Street" loading="lazy" />
         </div>
         <div class="photo-meta">
           <div>
-            <h3>Lines in the Sky</h3>
-            <p style="font-size: 0.8rem; color: var(--text-muted);">Barangaroo Towers</p>
+            <h3>Sydney Street & Form</h3>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">Barangaroo & CBD</p>
           </div>
-          <span class="photo-gear">Architecture</span>
+          <span class="photo-gear">Urban →</span>
         </div>
-      </article>
+      </a>
 
-      <article class="photo-card" data-category="central-coast" onclick="openLightbox('images/central-coast/tascott-1.jpg', 'Brisbane Water Mist', 'Tascott Waterfront · X100VI')">
+      <a href="my-coast-blog/index.html" class="photo-card" style="text-decoration: none; color: inherit;">
         <div class="img-wrapper">
-          <img src="images/central-coast/tascott-1.jpg" alt="Tascott Waterfront" onerror="this.src='https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80'" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="My Coast Series" loading="lazy" />
         </div>
         <div class="photo-meta">
           <div>
-            <h3>Brisbane Water</h3>
-            <p style="font-size: 0.8rem; color: var(--text-muted);">Tascott Waterfront</p>
+            <h3>My Coast A–Z Series</h3>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">Local Documentary Journal</p>
           </div>
-          <span class="photo-gear">Central Coast</span>
+          <span class="photo-gear">Read Blog →</span>
         </div>
-      </article>
-
-      <article class="photo-card" data-category="urban" onclick="openLightbox('images/urban/sydney-2.jpg', 'Shadows on Martin Place', 'Sydney Street Series')">
-        <div class="img-wrapper">
-          <img src="images/urban/sydney-2.jpg" alt="Martin Place Street" onerror="this.src='https://images.unsplash.com/photo-1477959858617-67f30bc75b82?auto=format&fit=crop&w=800&q=80'" loading="lazy" />
-        </div>
-        <div class="photo-meta">
-          <div>
-            <h3>Martin Place Shadows</h3>
-            <p style="font-size: 0.8rem; color: var(--text-muted);">Sydney CBD</p>
-          </div>
-          <span class="photo-gear">Street</span>
-        </div>
-      </article>
-
-      <article class="photo-card" data-category="night" onclick="openLightbox('images/night/astro-1.jpg', 'Mt Wondabyne Night Sky', 'Brisbane Water National Park · Astro')">
-        <div class="img-wrapper vertical">
-          <img src="images/night/astro-1.jpg" alt="Mt Wondabyne Astro" onerror="this.src='https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?auto=format&fit=crop&w=800&q=80'" loading="lazy" />
-        </div>
-        <div class="photo-meta">
-          <div>
-            <h3>Mt Wondabyne</h3>
-            <p style="font-size: 0.8rem; color: var(--text-muted);">Night & Astro Series</p>
-          </div>
-          <span class="photo-gear">Astro</span>
-        </div>
-      </article>
-
-      <article class="photo-card" data-category="sport" onclick="openLightbox('images/sport/mariners-1.jpg', 'Mariners Matchday Drama', 'Central Coast Stadium')">
-        <div class="img-wrapper">
-          <img src="images/sport/mariners-1.jpg" alt="Mariners Matchday" onerror="this.src='https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=800&q=80'" loading="lazy" />
-        </div>
-        <div class="photo-meta">
-          <div>
-            <h3>Mariners Matchday</h3>
-            <p style="font-size: 0.8rem; color: var(--text-muted);">Gosford Stadium</p>
-          </div>
-          <span class="photo-gear">Sport</span>
-        </div>
-      </article>
+      </a>
 
     </div>
   </main>
-
-  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
-    <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
-    <div class="lightbox-content">
-      <img id="lightboxImg" src="" alt="Full preview" />
-      <div class="lightbox-caption">
-        <h4 id="lightboxTitle"></h4>
-        <p id="lightboxSub"></p>
-      </div>
-    </div>
-  </div>
 
   <footer>
     <p>&copy; 2026 Mark Sinclair Photography. Hosted on GitHub Pages.</p>
   </footer>
 
-  <script>
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const cards = document.querySelectorAll('.photo-card');
-
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        const filter = btn.getAttribute('data-filter');
-        cards.forEach(card => {
-          if (filter === 'all' || card.getAttribute('data-category') === filter) {
-            card.style.display = 'block';
-          } else {
-            card.style.display = 'none';
-          }
-        });
-      });
-    });
-
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightboxImg');
-    const lightboxTitle = document.getElementById('lightboxTitle');
-    const lightboxSub = document.getElementById('lightboxSub');
-
-    function openLightbox(src, title, sub) {
-      lightboxImg.src = src;
-      lightboxTitle.textContent = title;
-      lightboxSub.textContent = sub;
-      lightbox.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeLightbox(e) {
-      if (!e || e.target === lightbox || e.target.classList.contains('lightbox-close')) {
-        lightbox.classList.remove('active');
-        document.body.style.overflow = 'auto';
-      }
-    }
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeLightbox();
-    });
-  </script>
 </body>
 </html>
