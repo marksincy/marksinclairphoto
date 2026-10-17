@@ -35,6 +35,8 @@ GALLERIES = {
             ("london", "London", "Monochrome geometry, commuting crowds, and iconic streetscapes."),
             ("melbourne", "Melbourne", "Laneway textures, tramlines, and shifting light."),
             ("sydney", "Sydney", "Harbour geometry, high-rise shadows, and street rhythm."),
+            ("paris", "Paris", "Haussmann architecture, grand boulevards, and timeless street moments."),
+            ("venice", "Venice", "Canals, reflections, and moody atmospheric light through historic lanes."),
             ("street-art", "Street Art", "Murals, urban colour, and ephemeral public expression.")
         ]
     },
@@ -109,6 +111,8 @@ def get_nav(rel_root):
               <li><a href="{rel_root}galleries/urban/london.html">London</a></li>
               <li><a href="{rel_root}galleries/urban/melbourne.html">Melbourne</a></li>
               <li><a href="{rel_root}galleries/urban/sydney.html">Sydney</a></li>
+              <li><a href="{rel_root}galleries/urban/paris.html">Paris</a></li>
+              <li><a href="{rel_root}galleries/urban/venice.html">Venice</a></li>
               <li><a href="{rel_root}galleries/urban/street-art.html">Street Art</a></li>
             </ul>
           </li>
@@ -267,7 +271,7 @@ def main():
                 f.write(html_content)
             print(f"Built: {html_path}")
 
-    # Architecture (Lives in galleries/ directly)
+    # Architecture
     arch_img_dir = os.path.join("images", "architecture")
     os.makedirs(arch_img_dir, exist_ok=True)
     arch_html = build_gallery_html(
