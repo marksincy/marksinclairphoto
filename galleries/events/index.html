@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Events Locations | Mark Sinclair Photography</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <style>
+    .gallery-container { padding-top: 2.5rem; }
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 1.75rem;
+    }
+    .portfolio-tile {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      aspect-ratio: 16 / 11;
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      text-decoration: none;
+      display: block;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, box-shadow 0.35s ease;
+    }
+    .portfolio-tile:hover {
+      transform: translateY(-5px);
+      border-color: rgba(255, 255, 255, 0.3);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    }
+    .tile-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .portfolio-tile:hover .tile-img { transform: scale(1.05); }
+    .tile-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10, 11, 14, 0.94) 0%, rgba(10, 11, 14, 0.35) 55%, rgba(10, 11, 14, 0.05) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.85rem;
+      transition: background 0.35s ease;
+    }
+    .portfolio-tile:hover .tile-overlay {
+      background: linear-gradient(to top, rgba(10, 11, 14, 0.98) 0%, rgba(10, 11, 14, 0.45) 60%, rgba(10, 11, 14, 0.1) 100%);
+    }
+    .tile-tag {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      margin-bottom: 0.35rem;
+      font-weight: 500;
+    }
+    .tile-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: #fff;
+      margin-bottom: 0.3rem;
+      line-height: 1.2;
+    }
+    .tile-desc {
+      font-size: 0.83rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+      max-width: 95%;
+    }
+    .tile-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #fff;
+      margin-top: 0.8rem;
+      font-weight: 500;
+      transition: gap 0.25s ease, color 0.25s ease;
+    }
+    .portfolio-tile:hover .tile-action {
+      gap: 0.7rem;
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-container">
+      <a href="../../index.html" class="logo">mark sinclair<span>.</span>photo</a>
+      <nav>
+        <ul>
+          <li><a href="../../photo-blog/index.html">Photo Blog</a></li>
+          <li><a href="../../my-coast-blog/index.html">My Coast Blog</a></li>
+          <li>
+            <a href="../../galleries/central-coast/index.html">Central Coast ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="../../galleries/central-coast/chittaway-bay.html">Chittaway Bay</a></li>
+              <li><a href="../../galleries/central-coast/copacabana.html">Copacabana</a></li>
+              <li><a href="../../galleries/central-coast/girrakool.html">Girrakool</a></li>
+              <li><a href="../../galleries/central-coast/koolewong.html">Koolewong</a></li>
+              <li><a href="../../galleries/central-coast/morisset.html">Morisset Abandoned Hospital</a></li>
+              <li><a href="../../galleries/central-coast/mt-wondabyne.html">Mt Wondabyne</a></li>
+              <li><a href="../../galleries/central-coast/pink-caves.html">Pink Caves</a></li>
+              <li><a href="../../galleries/central-coast/soldiers-beach.html">Soldiers Beach</a></li>
+              <li><a href="../../galleries/central-coast/somersby-falls.html">Somersby Falls</a></li>
+              <li><a href="../../galleries/central-coast/tascott.html">Tascott</a></li>
+              <li><a href="../../galleries/central-coast/toowoon-bay.html">Toowoon Bay</a></li>
+              <li><a href="../../galleries/central-coast/woy-woy.html">Woy Woy</a></li>
+              <li><a href="../../galleries/central-coast/yarramalong.html">Yarramalong</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="../../galleries/travel/index.html">Travel ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="../../galleries/travel/england.html">England</a></li>
+              <li><a href="../../galleries/travel/fiji.html">Fiji</a></li>
+              <li><a href="../../galleries/travel/france.html">France</a></li>
+              <li><a href="../../galleries/travel/italy.html">Italy</a></li>
+              <li><a href="../../galleries/travel/singapore.html">Singapore</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="../../galleries/urban/index.html">Urban ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="../../galleries/urban/london.html">London</a></li>
+              <li><a href="../../galleries/urban/melbourne.html">Melbourne</a></li>
+              <li><a href="../../galleries/urban/sydney.html">Sydney</a></li>
+              <li><a href="../../galleries/urban/paris.html">Paris</a></li>
+              <li><a href="../../galleries/urban/venice.html">Venice</a></li>
+              <li><a href="../../galleries/urban/street-art.html">Street Art</a></li>
+            </ul>
+          </li>
+          <li><a href="../../galleries/architecture.html">Architecture</a></li>
+          <li>
+            <a href="#">Natural World ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="../../galleries/natural-world/flowers.html">Flowers</a></li>
+              <li><a href="../../galleries/natural-world/birds.html">Birds</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">Night ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="../../galleries/night/astro.html">Astro</a></li>
+              <li><a href="../../galleries/night/urban.html">Urban</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">Events ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="../../galleries/events/brickman-lego.html">Brickman Lego</a></li>
+              <li><a href="../../galleries/events/cars-coffee.html">Central Coast Cars & Coffee</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">Sport ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="../../galleries/sport/central-coast-mariners.html">Central Coast Mariners</a></li>
+            </ul>
+          </li>
+          <li><a href="../../about.html">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-header">
+    <a href="../../index.html" class="breadcrumbs">&larr; Return to Home</a>
+    <h1>Events Locations</h1>
+    <p>Automotive culture, scale models, and community gatherings.</p>
+  </section>
+
+  <main class="gallery-container">
+    <div class="showcase-grid">
+      
+      <a href="brickman-lego.html" class="portfolio-tile">
+        <img class="tile-img" src="../../images/events/brickman-lego/DSC03106.jpg" alt="Brickman Lego" loading="lazy" />
+        <div class="tile-overlay">
+          <span class="tile-tag">Events Series</span>
+          <h2 class="tile-title">Brickman Lego</h2>
+          <p class="tile-desc">Intricate scale models, vibrant colour, and playful craft.</p>
+          <span class="tile-action">View Gallery &rarr;</span>
+        </div>
+      </a>
+      <a href="cars-coffee.html" class="portfolio-tile">
+        <img class="tile-img" src="../../images/events/cars-coffee/cover.jpg" alt="Central Coast Cars & Coffee" loading="lazy" />
+        <div class="tile-overlay">
+          <span class="tile-tag">Events Series</span>
+          <h2 class="tile-title">Central Coast Cars & Coffee</h2>
+          <p class="tile-desc">Classic chrome, vintage bodywork, and early morning automotive culture.</p>
+          <span class="tile-action">View Gallery &rarr;</span>
+        </div>
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Mark Sinclair Photography. Hosted on GitHub Pages.</p>
+  </footer>
+
+</body>
+</html>
