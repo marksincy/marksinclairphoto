@@ -8,206 +8,438 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .page-header {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4.5rem 2rem 2.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .breadcrumbs {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 0.75rem;
+    }
+    .page-header h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.4rem, 4vw, 3.5rem);
+      font-weight: 400;
+      color: #fff;
+      margin-bottom: 0.75rem;
+    }
+    .page-header p {
+      color: var(--text-muted);
+      max-width: 650px;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .blog-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3.5rem 2rem 6rem;
+    }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 2rem;
+    }
+    .blog-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, box-shadow 0.35s ease;
+    }
+    .blog-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(255, 255, 255, 0.3);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    }
+    .blog-card-img {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      background-color: var(--surface);
+    }
+    .blog-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .blog-card:hover .blog-card-img img {
+      transform: scale(1.05);
+    }
+    .blog-card-body {
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .blog-date {
+      font-size: 0.75rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    .blog-card-body h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: #fff;
+      line-height: 1.3;
+      margin-bottom: 0.75rem;
+    }
+    .blog-card-body p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+    .read-more {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #fff;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: gap 0.25s ease, color 0.25s ease;
+    }
+    .blog-card:hover .read-more {
+      color: var(--accent);
+      gap: 0.7rem;
+    }
+    @media (max-width: 768px) {
+      .blog-grid {
+        grid-template-columns: 1fr;
+      }
+      .page-header {
+        padding: 3rem 1.5rem 2rem;
+      }
+      .blog-container {
+        padding: 2.5rem 1.5rem 4rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
   <header>
     <div class="nav-container">
       <a href="../index.html" class="logo">mark sinclair<span>.</span>photo</a>
-      <a href="../index.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.85rem;">← Return Home</a>
+      <nav>
+        <ul>
+          <li><a href="../photo-blog/index.html">Photo Blog</a></li>
+          <li><a href="../my-coast-blog/index.html" class="active">My Coast Blog</a></li>
+          <li>
+            <a href="../galleries/central-coast/index.html">Central Coast ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="../galleries/central-coast/chittaway-bay.html">Chittaway Bay</a></li>
+              <li><a href="../galleries/central-coast/copacabana.html">Copacabana</a></li>
+              <li><a href="../galleries/central-coast/girrakool.html">Girrakool</a></li>
+              <li><a href="../galleries/central-coast/koolewong.html">Koolewong</a></li>
+              <li><a href="../galleries/central-coast/morisset.html">Morisset Abandoned Hospital</a></li>
+              <li><a href="../galleries/central-coast/mt-wondabyne.html">Mt Wondabyne</a></li>
+              <li><a href="../galleries/central-coast/pink-caves.html">Pink Caves</a></li>
+              <li><a href="../galleries/central-coast/soldiers-beach.html">Soldiers Beach</a></li>
+              <li><a href="../galleries/central-coast/somersby-falls.html">Somersby Falls</a></li>
+              <li><a href="../galleries/central-coast/tascott.html">Tascott</a></li>
+              <li><a href="../galleries/central-coast/toowoon-bay.html">Toowoon Bay</a></li>
+              <li><a href="../galleries/central-coast/woy-woy.html">Woy Woy</a></li>
+              <li><a href="../galleries/central-coast/yarramalong.html">Yarramalong</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="../galleries/travel/index.html">Travel ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="../galleries/travel/england.html">England</a></li>
+              <li><a href="../galleries/travel/fiji.html">Fiji</a></li>
+              <li><a href="../galleries/travel/france.html">France</a></li>
+              <li><a href="../galleries/travel/italy.html">Italy</a></li>
+              <li><a href="../galleries/travel/singapore.html">Singapore</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="../galleries/urban/index.html">Urban ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="../galleries/urban/london.html">London</a></li>
+              <li><a href="../galleries/urban/melbourne.html">Melbourne</a></li>
+              <li><a href="../galleries/urban/sydney.html">Sydney</a></li>
+              <li><a href="../galleries/urban/paris.html">Paris</a></li>
+              <li><a href="../galleries/urban/venice.html">Venice</a></li>
+              <li><a href="../galleries/urban/street-art.html">Street Art</a></li>
+            </ul>
+          </li>
+          <li><a href="../galleries/architecture.html">Architecture</a></li>
+          <li>
+            <a href="../galleries/natural-world/index.html">Natural World ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="../galleries/natural-world/flowers.html">Flowers</a></li>
+              <li><a href="../galleries/natural-world/birds.html">Birds</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="../galleries/night/index.html">Night ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="../galleries/night/astro.html">Astro</a></li>
+              <li><a href="../galleries/night/urban.html">Urban</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="../galleries/events/index.html">Events ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="../galleries/events/brickman-lego.html">Brickman Lego</a></li>
+              <li><a href="../galleries/events/cars-coffee.html">Central Coast Cars & Coffee</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="../galleries/sport/index.html">Sport ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="../galleries/sport/central-coast-mariners.html">Central Coast Mariners</a></li>
+            </ul>
+          </li>
+          <li><a href="../about.html">About</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
   <section class="page-header">
+    <a href="../index.html" class="breadcrumbs">&larr; Return to Home</a>
     <h1>My Coast Blog</h1>
-    <p>The dedicated A–Z documentary exploration across the NSW Central Coast.</p>
+    <p>The dedicated A–Z documentary project exploring the coastlines, headlands, and character of the NSW Central Coast.</p>
   </section>
 
-  <main class="gallery-container">
-    <div class="gallery-grid">
-      
-      <article class="photo-card" style="text-align: left; padding: 0;">
-        <a href="my-coast-avoca-beach.html" style="text-decoration: none; color: inherit; display: block; padding: 1.75rem;">
-          <div style="font-size: 0.75rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">April 25, 2016</div>
-          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--text); margin-bottom: 0.75rem;">My Coast - Avoca Beach</h3>
-          <p style="color: var(--text-muted); font-size: 0.9rem; font-weight: 300; line-height: 1.5; margin-bottom: 1rem;">
-  
-
-The A to Z of the&nbsp;Central Coast, NSW, AustraliaWelcome to the first instalment of my blog and an introduction into the area that m...</p>
-          <span style="color: var(--accent); font-size: 0.85rem; font-weight: 500;">Read Story →</span>
-        </a>
-      </article>
-
-      <article class="photo-card" style="text-align: left; padding: 0;">
-        <a href="my-coast-bouddi-national-park.html" style="text-decoration: none; color: inherit; display: block; padding: 1.75rem;">
-          <div style="font-size: 0.75rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">May 09, 2016</div>
-          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--text); margin-bottom: 0.75rem;">My Coast - Bouddi National Park</h3>
-          <p style="color: var(--text-muted); font-size: 0.9rem; font-weight: 300; line-height: 1.5; margin-bottom: 1rem;">The A-Z of the Central Coast, NSW, AustraliaWelcome to the second&nbsp;instalment of my fortnightly photo blog exploring my local area.&nbsp...</p>
-          <span style="color: var(--accent); font-size: 0.85rem; font-weight: 500;">Read Story →</span>
-        </a>
-      </article>
-
-      <article class="photo-card" style="text-align: left; padding: 0;">
-        <a href="my-coast-catherine-hill-bay.html" style="text-decoration: none; color: inherit; display: block; padding: 1.75rem;">
-          <div style="font-size: 0.75rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">May 22, 2016</div>
-          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--text); margin-bottom: 0.75rem;">My Coast - Catherine Hill Bay</h3>
-          <p style="color: var(--text-muted); font-size: 0.9rem; font-weight: 300; line-height: 1.5; margin-bottom: 1rem;">The A-Z of the Central Coast, NSW, AustraliaWelcome to the third installment of my fortnightly photo blog exploring my local area. This week...</p>
-          <span style="color: var(--accent); font-size: 0.85rem; font-weight: 500;">Read Story →</span>
-        </a>
-      </article>
-
-      <article class="photo-card" style="text-align: left; padding: 0;">
-        <a href="my-coast-davistown.html" style="text-decoration: none; color: inherit; display: block; padding: 1.75rem;">
-          <div style="font-size: 0.75rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">June 06, 2016</div>
-          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--text); margin-bottom: 0.75rem;">My Coast - Davistown</h3>
-          <p style="color: var(--text-muted); font-size: 0.9rem; font-weight: 300; line-height: 1.5; margin-bottom: 1rem;">The A-Z of the Central Coast, NSW, AustraliaWelcome to the fourth&nbsp;instalment&nbsp;of my fortnightly photo blog. &nbsp;This week's desti...</p>
-          <span style="color: var(--accent); font-size: 0.85rem; font-weight: 500;">Read Story →</span>
-        </a>
-      </article>
-
-      <article class="photo-card" style="text-align: left; padding: 0;">
-        <a href="my-coast-ettalong-beach.html" style="text-decoration: none; color: inherit; display: block; padding: 1.75rem;">
-          <div style="font-size: 0.75rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">June 20, 2016</div>
-          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--text); margin-bottom: 0.75rem;">My Coast - Ettalong Beach</h3>
-          <p style="color: var(--text-muted); font-size: 0.9rem; font-weight: 300; line-height: 1.5; margin-bottom: 1rem;">The A-Z of the Central Coast, NSW, AustraliaWelcome to the fifth instalment&nbsp;of my fortnightly photo blog exploring my local area, the C...</p>
-          <span style="color: var(--accent); font-size: 0.85rem; font-weight: 500;">Read Story →</span>
-        </a>
-      </article>
-
-      <article class="photo-card" style="text-align: left; padding: 0;">
-        <a href="my-coast-forresters-beach.html" style="text-decoration: none; color: inherit; display: block; padding: 1.75rem;">
-          <div style="font-size: 0.75rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">July 04, 2016</div>
-          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--text); margin-bottom: 0.75rem;">My Coast - Forresters Beach</h3>
-          <p style="color: var(--text-muted); font-size: 0.9rem; font-weight: 300; line-height: 1.5; margin-bottom: 1rem;">
-  
-
-The A-Z of the Central Coast, NSW, AustraliaWelcome to the sixth instalment&nbsp;of my fortnightly photo blog exploring my local area, ...</p>
-          <span style="color: var(--accent); font-size: 0.85rem; font-weight: 500;">Read Story →</span>
-        </a>
-      </article>
-
-      <article class="photo-card" style="text-align: left; padding: 0;">
-        <a href="my-coast-gosford.html" style="text-decoration: none; color: inherit; display: block; padding: 1.75rem;">
-          <div style="font-size: 0.75rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">July 18, 2016</div>
-          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--text); margin-bottom: 0.75rem;">My Coast - Gosford</h3>
-          <p style="color: var(--text-muted); font-size: 0.9rem; font-weight: 300; line-height: 1.5; margin-bottom: 1rem;">The A-Z of the Central Coast, NSW, AustraliaWelcome to the seventh instalment&nbsp;of my fortnightly photo blog exploring my local area, the...</p>
-          <span style="color: var(--accent); font-size: 0.85rem; font-weight: 500;">Read Story →</span>
-        </a>
-      </article>
-
-      <article class="photo-card" style="text-align: left; padding: 0;">
-        <a href="my-coast-halekulani.html" style="text-decoration: none; color: inherit; display: block; padding: 1.75rem;">
-          <div style="font-size: 0.75rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">August 01, 2016</div>
-          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--text); margin-bottom: 0.75rem;">My Coast - Halekulani</h3>
-          <p style="color: var(--text-muted); font-size: 0.9rem; font-weight: 300; line-height: 1.5; margin-bottom: 1rem;">The A-Z of the Central Coast, NSW, AustraliaWelcome to the eighth&nbsp;installment&nbsp;of my fortnightly photo blog exploring my local area...</p>
-          <span style="color: var(--accent); font-size: 0.85rem; font-weight: 500;">Read Story →</span>
-        </a>
-      </article>
-
-      <article class="photo-card" style="text-align: left; padding: 0;">
-        <a href="my-coast-st-huberts-island.html" style="text-decoration: none; color: inherit; display: block; padding: 1.75rem;">
-          <div style="font-size: 0.75rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">August 14, 2016</div>
-          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--text); margin-bottom: 0.75rem;">My Coast - St Huberts Island</h3>
-          <p style="color: var(--text-muted); font-size: 0.9rem; font-weight: 300; line-height: 1.5; margin-bottom: 1rem;">The A-Z of the Central Coast, NSW, AustraliaWelcome to the ninth&nbsp;installment&nbsp;of my fortnightly photo blog exploring my local area,...</p>
-          <span style="color: var(--accent); font-size: 0.85rem; font-weight: 500;">Read Story →</span>
-        </a>
-      </article>
-
-      <article class="photo-card" style="text-align: left; padding: 0;">
-        <a href="my-coast-jilliby.html" style="text-decoration: none; color: inherit; display: block; padding: 1.75rem;">
-          <div style="font-size: 0.75rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">August 29, 2016</div>
-          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--text); margin-bottom: 0.75rem;">My Coast - Jilliby</h3>
-          <p style="color: var(--text-muted); font-size: 0.9rem; font-weight: 300; line-height: 1.5; margin-bottom: 1rem;">The A-Z of the Central Coast, NSW, AustraliaWelcome to the tenth&nbsp;installment&nbsp;of my fortnightly photo blog exploring my local area,...</p>
-          <span style="color: var(--accent); font-size: 0.85rem; font-weight: 500;">Read Story →</span>
-        </a>
-      </article>
-
-      <article class="photo-card" style="text-align: left; padding: 0;">
-        <a href="my-coast-kariong.html" style="text-decoration: none; color: inherit; display: block; padding: 1.75rem;">
-          <div style="font-size: 0.75rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">September 12, 2016</div>
-          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--text); margin-bottom: 0.75rem;">My Coast - Kariong</h3>
-          <p style="color: var(--text-muted); font-size: 0.9rem; font-weight: 300; line-height: 1.5; margin-bottom: 1rem;">The A-Z of the Central Coast, NSW, AustraliaWelcome to the eleventh&nbsp;installment&nbsp;of my fortnightly photo blog exploring my local ar...</p>
-          <span style="color: var(--accent); font-size: 0.85rem; font-weight: 500;">Read Story →</span>
-        </a>
-      </article>
-
-      <article class="photo-card" style="text-align: left; padding: 0;">
-        <a href="my-coast-long-jetty.html" style="text-decoration: none; color: inherit; display: block; padding: 1.75rem;">
-          <div style="font-size: 0.75rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">September 27, 2016</div>
-          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--text); margin-bottom: 0.75rem;">My Coast - Long Jetty</h3>
-          <p style="color: var(--text-muted); font-size: 0.9rem; font-weight: 300; line-height: 1.5; margin-bottom: 1rem;">The A-Z of the Central Coast, NSW, AustraliaWelcome to the twelfth&nbsp;installment&nbsp;of my fortnightly photo blog exploring my local are...</p>
-          <span style="color: var(--accent); font-size: 0.85rem; font-weight: 500;">Read Story →</span>
-        </a>
-      </article>
-
-      <article class="photo-card" style="text-align: left; padding: 0;">
-        <a href="my-coast-mooney-mooney.html" style="text-decoration: none; color: inherit; display: block; padding: 1.75rem;">
-          <div style="font-size: 0.75rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">October 17, 2016</div>
-          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--text); margin-bottom: 0.75rem;">My Coast - Mooney Mooney</h3>
-          <p style="color: var(--text-muted); font-size: 0.9rem; font-weight: 300; line-height: 1.5; margin-bottom: 1rem;">The A-Z of the Central Coast, NSW, AustraliaWelcome to the thirteenth installment&nbsp;of my photo blog exploring my local area, the Central...</p>
-          <span style="color: var(--accent); font-size: 0.85rem; font-weight: 500;">Read Story →</span>
-        </a>
-      </article>
-
-      <article class="photo-card" style="text-align: left; padding: 0;">
-        <a href="my-coast-norah-head.html" style="text-decoration: none; color: inherit; display: block; padding: 1.75rem;">
-          <div style="font-size: 0.75rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">November 07, 2016</div>
-          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--text); margin-bottom: 0.75rem;">My Coast - Norah Head</h3>
-          <p style="color: var(--text-muted); font-size: 0.9rem; font-weight: 300; line-height: 1.5; margin-bottom: 1rem;">The A-Z of the Central Coast, NSW, AustraliaWelcome to the fourteenth installment&nbsp;of my photo blog exploring my local area, the Central...</p>
-          <span style="color: var(--accent); font-size: 0.85rem; font-weight: 500;">Read Story →</span>
-        </a>
-      </article>
-
-      <article class="photo-card" style="text-align: left; padding: 0;">
-        <a href="my-coast-pearl-beach.html" style="text-decoration: none; color: inherit; display: block; padding: 1.75rem;">
-          <div style="font-size: 0.75rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">December 08, 2016</div>
-          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--text); margin-bottom: 0.75rem;">My Coast - Pearl Beach</h3>
-          <p style="color: var(--text-muted); font-size: 0.9rem; font-weight: 300; line-height: 1.5; margin-bottom: 1rem;">The A-Z of the Central Coast, NSW, AustraliaWelcome to the fifteenth installment of my photo blog exploring my local area, the Central Coast...</p>
-          <span style="color: var(--accent); font-size: 0.85rem; font-weight: 500;">Read Story →</span>
-        </a>
-      </article>
-
-      <article class="photo-card" style="text-align: left; padding: 0;">
-        <a href="my-coast-ourimbah.html" style="text-decoration: none; color: inherit; display: block; padding: 1.75rem;">
-          <div style="font-size: 0.75rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">February 09, 2017</div>
-          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--text); margin-bottom: 0.75rem;">My Coast - Ourimbah</h3>
-          <p style="color: var(--text-muted); font-size: 0.9rem; font-weight: 300; line-height: 1.5; margin-bottom: 1rem;">The A-Z of the Central Coast, NSW, AustraliaWelcome to the sixteenth&nbsp;installment of my photo blog exploring my local area, the Central ...</p>
-          <span style="color: var(--accent); font-size: 0.85rem; font-weight: 500;">Read Story →</span>
-        </a>
-      </article>
-
-      <article class="photo-card" style="text-align: left; padding: 0;">
-        <a href="my-coast-rocky-point.html" style="text-decoration: none; color: inherit; display: block; padding: 1.75rem;">
-          <div style="font-size: 0.75rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">March 22, 2017</div>
-          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--text); margin-bottom: 0.75rem;">My Coast - Rocky Point</h3>
-          <p style="color: var(--text-muted); font-size: 0.9rem; font-weight: 300; line-height: 1.5; margin-bottom: 1rem;">The A-Z of the Central Coast, NSW, AustraliaWelcome to the seventeenth&nbsp;installment of my photo blog exploring my local area, the Centra...</p>
-          <span style="color: var(--accent); font-size: 0.85rem; font-weight: 500;">Read Story →</span>
-        </a>
-      </article>
-
-      <article class="photo-card" style="text-align: left; padding: 0;">
-        <a href="my-coast-somersby.html" style="text-decoration: none; color: inherit; display: block; padding: 1.75rem;">
-          <div style="font-size: 0.75rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">May 10, 2017</div>
-          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--text); margin-bottom: 0.75rem;">My Coast - Somersby</h3>
-          <p style="color: var(--text-muted); font-size: 0.9rem; font-weight: 300; line-height: 1.5; margin-bottom: 1rem;">The A-Z of the Central Coast, NSW, AustraliaWelcome to the eighteenth installment of my photo blog exploring my local area, the Central Coas...</p>
-          <span style="color: var(--accent); font-size: 0.85rem; font-weight: 500;">Read Story →</span>
-        </a>
-      </article>
-
-      <article class="photo-card" style="text-align: left; padding: 0;">
-        <a href="my-coast-terrigal.html" style="text-decoration: none; color: inherit; display: block; padding: 1.75rem;">
-          <div style="font-size: 0.75rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">June 18, 2017</div>
-          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--text); margin-bottom: 0.75rem;">My Coast - Terrigal</h3>
-          <p style="color: var(--text-muted); font-size: 0.9rem; font-weight: 300; line-height: 1.5; margin-bottom: 1rem;">The A-Z of the Central Coast, NSW, AustraliaWelcome to the nineteenth episode of my photo blog exploring my local area, the Central Coast. T...</p>
-          <span style="color: var(--accent); font-size: 0.85rem; font-weight: 500;">Read Story →</span>
-        </a>
-      </article>
-
+  <main class="blog-container">
+    <div class="blog-grid">
+      <a href="my-coast-avoca-beach.html" class="blog-card">
+        <div class="blog-card-img">
+          <img src="https://images.squarespace-cdn.com/content/v1/5ff585d54c771f39d6a9b04d/1610532842258-E0XXGVKG5NJPCRG2XIQK/img_20160427_061413.jpg?format=original" alt="My Coast - Avoca Beach" loading="lazy" />
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-date">My Coast Series</span>
+          <h3>My Coast - Avoca Beach</h3>
+          <p></p>
+          <span class="read-more">Explore Story &rarr;</span>
+        </div>
+      </a>
+      <a href="my-coast-bouddi-national-park.html" class="blog-card">
+        <div class="blog-card-img">
+          <img src="https://images.squarespace-cdn.com/content/v1/5ff585d54c771f39d6a9b04d/1641703376503-90TC5XO9W9QYLFC4DFHD/MaitlandBayHead.jpg?format=original" alt="My Coast - Bouddi National Park" loading="lazy" />
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-date">My Coast Series</span>
+          <h3>My Coast - Bouddi National Park</h3>
+          <p>Welcome to the second&nbsp;instalment of my fortnightly photo blog exploring my local area.&nbsp;This week I will take you to&nbsp;one of the many beautiful national...</p>
+          <span class="read-more">Explore Story &rarr;</span>
+        </div>
+      </a>
+      <a href="my-coast-catherine-hill-bay.html" class="blog-card">
+        <div class="blog-card-img">
+          <img src="https://images.squarespace-cdn.com/content/v1/5ff585d54c771f39d6a9b04d/1642206387435-O030ZWESWB74E5RZ86NG/Beach-1.jpg?format=original" alt="My Coast - Catherine Hill Bay" loading="lazy" />
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-date">My Coast Series</span>
+          <h3>My Coast - Catherine Hill Bay</h3>
+          <p>Welcome to the third installment of my fortnightly photo blog exploring my local area. This week's destination is Catherine Hill Bay.</p>
+          <span class="read-more">Explore Story &rarr;</span>
+        </div>
+      </a>
+      <a href="my-coast-davistown.html" class="blog-card">
+        <div class="blog-card-img">
+          <img src="https://images.squarespace-cdn.com/content/v1/5ff585d54c771f39d6a9b04d/1642205843204-OW8NUFVC4ZX7C0OFMT0U/Wharfvert-6.jpg?format=original" alt="My Coast - Davistown" loading="lazy" />
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-date">My Coast Series</span>
+          <h3>My Coast - Davistown</h3>
+          <p>Welcome to the fourth&nbsp;instalment&nbsp;of my fortnightly photo blog. &nbsp;This week's destination is&nbsp;Davistown</p>
+          <span class="read-more">Explore Story &rarr;</span>
+        </div>
+      </a>
+      <a href="my-coast-ettalong-beach.html" class="blog-card">
+        <div class="blog-card-img">
+          <img src="https://images.squarespace-cdn.com/content/v1/5ff585d54c771f39d6a9b04d/1642205489357-M79BK90UH09SZPHDHSDC/sunsetpano.jpg?format=original" alt="My Coast - Ettalong Beach" loading="lazy" />
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-date">My Coast Series</span>
+          <h3>My Coast - Ettalong Beach</h3>
+          <p>Welcome to the fifth instalment&nbsp;of my fortnightly photo blog exploring my local area, the Central Coast. This week's destination is&nbsp;Ettalong Beach.</p>
+          <span class="read-more">Explore Story &rarr;</span>
+        </div>
+      </a>
+      <a href="my-coast-forresters-beach.html" class="blog-card">
+        <div class="blog-card-img">
+          <img src="https://images.squarespace-cdn.com/content/v1/5ff585d54c771f39d6a9b04d/1610532863260-H2G3LSLJ9QMK097AR6I5/wavebreak.jpg?format=original" alt="My Coast - Forresters Beach" loading="lazy" />
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-date">My Coast Series</span>
+          <h3>My Coast - Forresters Beach</h3>
+          <p></p>
+          <span class="read-more">Explore Story &rarr;</span>
+        </div>
+      </a>
+      <a href="my-coast-gosford.html" class="blog-card">
+        <div class="blog-card-img">
+          <img src="https://images.squarespace-cdn.com/content/v1/5ff585d54c771f39d6a9b04d/1642204541980-M8LFQ652R7TEQBV1NZ3H/longexpo.jpg?format=original" alt="My Coast - Gosford" loading="lazy" />
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-date">My Coast Series</span>
+          <h3>My Coast - Gosford</h3>
+          <p>Welcome to the seventh instalment&nbsp;of my fortnightly photo blog exploring my local area, the Central Coast. This week's destination is Gosford.</p>
+          <span class="read-more">Explore Story &rarr;</span>
+        </div>
+      </a>
+      <a href="my-coast-halekulani.html" class="blog-card">
+        <div class="blog-card-img">
+          <img src="https://images.squarespace-cdn.com/content/v1/5ff585d54c771f39d6a9b04d/1642204301119-W225SKDWW8VA218MN1XW/Sunset+lake.jpg?format=original" alt="My Coast - Halekulani" loading="lazy" />
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-date">My Coast Series</span>
+          <h3>My Coast - Halekulani</h3>
+          <p>Welcome to the eighth&nbsp;installment&nbsp;of my fortnightly photo blog exploring my local area, the Central Coast. This week's destination is&nbsp;Halekulani.</p>
+          <span class="read-more">Explore Story &rarr;</span>
+        </div>
+      </a>
+      <a href="my-coast-jilliby.html" class="blog-card">
+        <div class="blog-card-img">
+          <img src="https://images.squarespace-cdn.com/content/v1/5ff585d54c771f39d6a9b04d/1642203623515-9H9ETA9ISEXI1CJJF5FP/sunflare.jpg?format=original" alt="My Coast - Jilliby" loading="lazy" />
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-date">My Coast Series</span>
+          <h3>My Coast - Jilliby</h3>
+          <p>Welcome to the tenth&nbsp;installment&nbsp;of my fortnightly photo blog exploring my local area, the Central Coast. This&nbsp;week's destination is Jilliby, an area...</p>
+          <span class="read-more">Explore Story &rarr;</span>
+        </div>
+      </a>
+      <a href="my-coast-kariong.html" class="blog-card">
+        <div class="blog-card-img">
+          <img src="https://images.squarespace-cdn.com/content/v1/5ff585d54c771f39d6a9b04d/1642203190460-VUF31BFERTLSG998ZA2Z/IMG_4721.jpg?format=original" alt="My Coast - Kariong" loading="lazy" />
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-date">My Coast Series</span>
+          <h3>My Coast - Kariong</h3>
+          <p>Welcome to the eleventh&nbsp;installment&nbsp;of my fortnightly photo blog exploring my local area, the Central Coast. This&nbsp;week's destination is...</p>
+          <span class="read-more">Explore Story &rarr;</span>
+        </div>
+      </a>
+      <a href="my-coast-long-jetty.html" class="blog-card">
+        <div class="blog-card-img">
+          <img src="https://images.squarespace-cdn.com/content/v1/5ff585d54c771f39d6a9b04d/1642202010694-XBHSHTJG3001P39VF1N1/IMG_2738.jpg?format=original" alt="My Coast - Long Jetty" loading="lazy" />
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-date">My Coast Series</span>
+          <h3>My Coast - Long Jetty</h3>
+          <p>Welcome to the twelfth&nbsp;installment&nbsp;of my fortnightly photo blog exploring my local area, the Central Coast. This&nbsp;week's destination is&nbsp;Long Jetty.</p>
+          <span class="read-more">Explore Story &rarr;</span>
+        </div>
+      </a>
+      <a href="my-coast-mooney-mooney.html" class="blog-card">
+        <div class="blog-card-img">
+          <img src="https://images.squarespace-cdn.com/content/v1/5ff585d54c771f39d6a9b04d/1642201661728-W3P70XXCIN0EGGIB170I/IMG_7287.jpg?format=original" alt="My Coast - Mooney Mooney" loading="lazy" />
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-date">My Coast Series</span>
+          <h3>My Coast - Mooney Mooney</h3>
+          <p>Welcome to the thirteenth installment&nbsp;of my photo blog exploring my local area, the Central Coast. This&nbsp;week's destination, Mooney Mooney, marks the halfway...</p>
+          <span class="read-more">Explore Story &rarr;</span>
+        </div>
+      </a>
+      <a href="my-coast-norah-head.html" class="blog-card">
+        <div class="blog-card-img">
+          <img src="https://images.squarespace-cdn.com/content/v1/5ff585d54c771f39d6a9b04d/1642201338011-TOSK35LJMJKHCSH8VIRM/IMG_7650.jpg?format=original" alt="My Coast - Norah Head" loading="lazy" />
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-date">My Coast Series</span>
+          <h3>My Coast - Norah Head</h3>
+          <p>Welcome to the fourteenth installment&nbsp;of my photo blog exploring my local area, the Central Coast. This&nbsp;week’s destination&nbsp;is Norah Head.</p>
+          <span class="read-more">Explore Story &rarr;</span>
+        </div>
+      </a>
+      <a href="my-coast-ourimbah.html" class="blog-card">
+        <div class="blog-card-img">
+          <img src="https://images.squarespace-cdn.com/content/v1/5ff585d54c771f39d6a9b04d/1642200251067-2XBSMXGMGJ8IE2HS8WDZ/IMG_8200.jpg?format=original" alt="My Coast - Ourimbah" loading="lazy" />
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-date">My Coast Series</span>
+          <h3>My Coast - Ourimbah</h3>
+          <p>Welcome to the sixteenth&nbsp;installment of my photo blog exploring my local area, the Central Coast. This is my first post of 2017 and this week I...</p>
+          <span class="read-more">Explore Story &rarr;</span>
+        </div>
+      </a>
+      <a href="my-coast-pearl-beach.html" class="blog-card">
+        <div class="blog-card-img">
+          <img src="https://images.squarespace-cdn.com/content/v1/5ff585d54c771f39d6a9b04d/1642200844438-IXFGVDOYNZDOYXN910VD/IMG_7783.jpg?format=original" alt="My Coast - Pearl Beach" loading="lazy" />
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-date">My Coast Series</span>
+          <h3>My Coast - Pearl Beach</h3>
+          <p>Welcome to the fifteenth installment of my photo blog exploring my local area, the Central Coast. This week I have broken with tradition and skipped a letter. I will...</p>
+          <span class="read-more">Explore Story &rarr;</span>
+        </div>
+      </a>
+      <a href="my-coast-rocky-point.html" class="blog-card">
+        <div class="blog-card-img">
+          <img src="https://images.squarespace-cdn.com/content/v1/5ff585d54c771f39d6a9b04d/1641812622108-ZQT9EDL6962FXZKVLB8X/IMG_8368.jpg?format=original" alt="My Coast - Rocky Point" loading="lazy" />
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-date">My Coast Series</span>
+          <h3>My Coast - Rocky Point</h3>
+          <p>Welcome to the seventeenth&nbsp;installment of my photo blog exploring my local area, the Central Coast. This week's destination, with the absence of any suburbs...</p>
+          <span class="read-more">Explore Story &rarr;</span>
+        </div>
+      </a>
+      <a href="my-coast-somersby.html" class="blog-card">
+        <div class="blog-card-img">
+          <img src="https://images.squarespace-cdn.com/content/v1/5ff585d54c771f39d6a9b04d/1642199619097-JG7OT4M2SPPS1YQQ259H/IMG_8561-Edit.jpg?format=original" alt="My Coast - Somersby" loading="lazy" />
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-date">My Coast Series</span>
+          <h3>My Coast - Somersby</h3>
+          <p>Welcome to the eighteenth installment of my photo blog exploring my local area, the Central Coast. This week is my “S” destination, Somersby.</p>
+          <span class="read-more">Explore Story &rarr;</span>
+        </div>
+      </a>
+      <a href="my-coast-st-huberts-island.html" class="blog-card">
+        <div class="blog-card-img">
+          <img src="https://images.squarespace-cdn.com/content/v1/5ff585d54c771f39d6a9b04d/1642203922902-6CHWJSPIWK67HIL35USC/boat.jpg?format=original" alt="My Coast - St Huberts Island" loading="lazy" />
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-date">My Coast Series</span>
+          <h3>My Coast - St Huberts Island</h3>
+          <p>Welcome to the ninth&nbsp;installment&nbsp;of my fortnightly photo blog exploring my local area, the Central Coast. This&nbsp;week's destination is St Huberts Island.</p>
+          <span class="read-more">Explore Story &rarr;</span>
+        </div>
+      </a>
+      <a href="my-coast-terrigal.html" class="blog-card">
+        <div class="blog-card-img">
+          <img src="https://images.squarespace-cdn.com/content/v1/5ff585d54c771f39d6a9b04d/1641701959338-SO897CFYXW6JQ0YXD9MB/P1020766.JPG?format=original" alt="My Coast - Terrigal" loading="lazy" />
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-date">My Coast Series</span>
+          <h3>My Coast - Terrigal</h3>
+          <p>Welcome to the nineteenth episode of my photo blog exploring my local area, the Central Coast. This week is my "T" destination, Terrigal.</p>
+          <span class="read-more">Explore Story &rarr;</span>
+        </div>
+      </a>
     </div>
   </main>
 
   <footer>
-    <p>© 2026 Mark Sinclair Photography. Hosted on GitHub Pages.</p>
+    <p>&copy; 2026 Mark Sinclair Photography. Hosted on GitHub Pages.</p>
   </footer>
+
 </body>
 </html>
