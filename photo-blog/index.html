@@ -8,95 +8,295 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .page-header {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4.5rem 2rem 2.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .breadcrumbs {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 0.75rem;
+    }
+    .page-header h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.4rem, 4vw, 3.5rem);
+      font-weight: 400;
+      color: #fff;
+      margin-bottom: 0.75rem;
+    }
+    .page-header p {
+      color: var(--text-muted);
+      max-width: 650px;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .blog-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3.5rem 2rem 6rem;
+    }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 2rem;
+    }
+    .blog-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, box-shadow 0.35s ease;
+    }
+    .blog-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(255, 255, 255, 0.3);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    }
+    .blog-card-img {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      background-color: var(--surface);
+    }
+    .blog-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .blog-card:hover .blog-card-img img {
+      transform: scale(1.05);
+    }
+    .blog-card-body {
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .blog-date {
+      font-size: 0.75rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    .blog-card-body h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: #fff;
+      line-height: 1.3;
+      margin-bottom: 0.75rem;
+    }
+    .blog-card-body p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+    .read-more {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #fff;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: gap 0.25s ease, color 0.25s ease;
+    }
+    .blog-card:hover .read-more {
+      color: var(--accent);
+      gap: 0.7rem;
+    }
+    @media (max-width: 768px) {
+      .blog-grid {
+        grid-template-columns: 1fr;
+      }
+      .page-header {
+        padding: 3rem 1.5rem 2rem;
+      }
+      .blog-container {
+        padding: 2.5rem 1.5rem 4rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
   <header>
     <div class="nav-container">
       <a href="../index.html" class="logo">mark sinclair<span>.</span>photo</a>
-      <a href="../index.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.85rem;">← Return Home</a>
+      <nav>
+        <ul>
+          <li><a href="../photo-blog/index.html" class="active">Photo Blog</a></li>
+          <li><a href="../my-coast-blog/index.html">My Coast Blog</a></li>
+          <li>
+            <a href="../galleries/central-coast/index.html">Central Coast ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="../galleries/central-coast/chittaway-bay.html">Chittaway Bay</a></li>
+              <li><a href="../galleries/central-coast/copacabana.html">Copacabana</a></li>
+              <li><a href="../galleries/central-coast/girrakool.html">Girrakool</a></li>
+              <li><a href="../galleries/central-coast/koolewong.html">Koolewong</a></li>
+              <li><a href="../galleries/central-coast/morisset.html">Morisset Abandoned Hospital</a></li>
+              <li><a href="../galleries/central-coast/mt-wondabyne.html">Mt Wondabyne</a></li>
+              <li><a href="../galleries/central-coast/pink-caves.html">Pink Caves</a></li>
+              <li><a href="../galleries/central-coast/soldiers-beach.html">Soldiers Beach</a></li>
+              <li><a href="../galleries/central-coast/somersby-falls.html">Somersby Falls</a></li>
+              <li><a href="../galleries/central-coast/tascott.html">Tascott</a></li>
+              <li><a href="../galleries/central-coast/toowoon-bay.html">Toowoon Bay</a></li>
+              <li><a href="../galleries/central-coast/woy-woy.html">Woy Woy</a></li>
+              <li><a href="../galleries/central-coast/yarramalong.html">Yarramalong</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="../galleries/travel/index.html">Travel ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="../galleries/travel/england.html">England</a></li>
+              <li><a href="../galleries/travel/fiji.html">Fiji</a></li>
+              <li><a href="../galleries/travel/france.html">France</a></li>
+              <li><a href="../galleries/travel/italy.html">Italy</a></li>
+              <li><a href="../galleries/travel/singapore.html">Singapore</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="../galleries/urban/index.html">Urban ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="../galleries/urban/london.html">London</a></li>
+              <li><a href="../galleries/urban/melbourne.html">Melbourne</a></li>
+              <li><a href="../galleries/urban/sydney.html">Sydney</a></li>
+              <li><a href="../galleries/urban/paris.html">Paris</a></li>
+              <li><a href="../galleries/urban/venice.html">Venice</a></li>
+              <li><a href="../galleries/urban/street-art.html">Street Art</a></li>
+            </ul>
+          </li>
+          <li><a href="../galleries/architecture.html">Architecture</a></li>
+          <li>
+            <a href="../galleries/natural-world/index.html">Natural World ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="../galleries/natural-world/flowers.html">Flowers</a></li>
+              <li><a href="../galleries/natural-world/birds.html">Birds</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="../galleries/night/index.html">Night ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="../galleries/night/astro.html">Astro</a></li>
+              <li><a href="../galleries/night/urban.html">Urban</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="../galleries/events/index.html">Events ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="../galleries/events/brickman-lego.html">Brickman Lego</a></li>
+              <li><a href="../galleries/events/cars-coffee.html">Central Coast Cars & Coffee</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="../galleries/sport/index.html">Sport ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="../galleries/sport/central-coast-mariners.html">Central Coast Mariners</a></li>
+            </ul>
+          </li>
+          <li><a href="../about.html">About</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
   <section class="page-header">
+    <a href="../index.html" class="breadcrumbs">&larr; Return to Home</a>
     <h1>Photo Blog</h1>
-    <p>Reflections on street walks, gear experiments, and documentary essays.</p>
+    <p>Documentary notes, camera field tests, street walking observations, and long-form visual reflections.</p>
   </section>
 
-  <main class="gallery-container">
-    <div class="gallery-grid">
-      
-      <article class="photo-card" style="text-align: left; padding: 0;">
-        <a href="chasing-the-sun.html" style="text-decoration: none; color: inherit; display: block; padding: 1.75rem;">
-          <div style="font-size: 0.75rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">February 16, 2025</div>
-          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--text); margin-bottom: 0.75rem;">Chasing the Sun</h3>
-          <p style="color: var(--text-muted); font-size: 0.9rem; font-weight: 300; line-height: 1.5; margin-bottom: 1rem;">[caption id="" align="alignnone" width="2500"]   Sunrise at Tascott Waterfront  [/caption] 
-  
-
-A Week of Photo Walks with the KidsAs a phot...</p>
-          <span style="color: var(--accent); font-size: 0.85rem; font-weight: 500;">Read Story →</span>
-        </a>
-      </article>
-
-      <article class="photo-card" style="text-align: left; padding: 0;">
-        <a href="street-life-in-sydney.html" style="text-decoration: none; color: inherit; display: block; padding: 1.75rem;">
-          <div style="font-size: 0.75rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">April 24, 2025</div>
-          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--text); margin-bottom: 0.75rem;">Street Life in Sydney</h3>
-          <p style="color: var(--text-muted); font-size: 0.9rem; font-weight: 300; line-height: 1.5; margin-bottom: 1rem;">[caption id="" align="alignnone" width="2500"]   Time for Reflection  [/caption] 
-  
-
-Moments on the MoveWandering the streets with my camer...</p>
-          <span style="color: var(--accent); font-size: 0.85rem; font-weight: 500;">Read Story →</span>
-        </a>
-      </article>
-
-      <article class="photo-card" style="text-align: left; padding: 0;">
-        <a href="after-the-storm.html" style="text-decoration: none; color: inherit; display: block; padding: 1.75rem;">
-          <div style="font-size: 0.75rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">February 16, 2025</div>
-          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--text); margin-bottom: 0.75rem;">After the Storm</h3>
-          <p style="color: var(--text-muted); font-size: 0.9rem; font-weight: 300; line-height: 1.5; margin-bottom: 1rem;">[caption id="" align="alignnone" width="2500"]   Boats on Brisbane Water  [/caption] 
-  
-
-Exploring the Waterfront at Tascott, Koolewong, an...</p>
-          <span style="color: var(--accent); font-size: 0.85rem; font-weight: 500;">Read Story →</span>
-        </a>
-      </article>
-
-      <article class="photo-card" style="text-align: left; padding: 0;">
-        <a href="the-morning-after.html" style="text-decoration: none; color: inherit; display: block; padding: 1.75rem;">
-          <div style="font-size: 0.75rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">March 08, 2026</div>
-          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--text); margin-bottom: 0.75rem;">The Morning After</h3>
-          <p style="color: var(--text-muted); font-size: 0.9rem; font-weight: 300; line-height: 1.5; margin-bottom: 1rem;">[caption id="" align="alignnone" width="5816"]   View from Tascott Railway Bridge  [/caption] 
-  
-
-There's a particular quiet that follows a...</p>
-          <span style="color: var(--accent); font-size: 0.85rem; font-weight: 500;">Read Story →</span>
-        </a>
-      </article>
-
-      <article class="photo-card" style="text-align: left; padding: 0;">
-        <a href="lines-in-the-sky.html" style="text-decoration: none; color: inherit; display: block; padding: 1.75rem;">
-          <div style="font-size: 0.75rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">October 06, 2025</div>
-          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--text); margin-bottom: 0.75rem;">Lines in the Sky</h3>
-          <p style="color: var(--text-muted); font-size: 0.9rem; font-weight: 300; line-height: 1.5; margin-bottom: 1rem;">A Love Letter to Sydney's ArchitectureThere's something magnetic about Sydney's skyline that keeps pulling me back to the streets with my ca...</p>
-          <span style="color: var(--accent); font-size: 0.85rem; font-weight: 500;">Read Story →</span>
-        </a>
-      </article>
-
-      <article class="photo-card" style="text-align: left; padding: 0;">
-        <a href="when-the-hill-turned-orange.html" style="text-decoration: none; color: inherit; display: block; padding: 1.75rem;">
-          <div style="font-size: 0.75rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">March 07, 2026</div>
-          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--text); margin-bottom: 0.75rem;">When the Hill Turned Orange</h3>
-          <p style="color: var(--text-muted); font-size: 0.9rem; font-weight: 300; line-height: 1.5; margin-bottom: 1rem;">Some days splinter in twoOn the early afternoon of Saturday 6 December 2025, we were heading to my daughter’s birthday party at Gosford Aqua...</p>
-          <span style="color: var(--accent); font-size: 0.85rem; font-weight: 500;">Read Story →</span>
-        </a>
-      </article>
-
+  <main class="blog-container">
+    <div class="blog-grid">
+      <a href="street-life-in-sydney.html" class="blog-card">
+        <div class="blog-card-img">
+          <img src="../images/photo-blog/DSCF1472.jpg" alt="Street Life in Sydney" loading="lazy" />
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-date">Street Journal</span>
+          <h3>Street Life in Sydney</h3>
+          <p>Candid light, shadow play, and observing the natural rhythm of everyday life through the streets of Sydney.</p>
+          <span class="read-more">Read Story &rarr;</span>
+        </div>
+      </a>
+      <a href="lines-in-the-sky.html" class="blog-card">
+        <div class="blog-card-img">
+          <img src="../images/architecture/DSC06734.jpg" alt="Lines in the Sky" loading="lazy" />
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-date">Architecture Walk</span>
+          <h3>Lines in the Sky</h3>
+          <p>Walking through Barangaroo on an overcast morning, exploring vertical geometry and reflections bouncing off glass and steel.</p>
+          <span class="read-more">Read Story &rarr;</span>
+        </div>
+      </a>
+      <a href="chasing-the-sun.html" class="blog-card">
+        <div class="blog-card-img">
+          <img src="../images/central-coast/somersby-falls/MudFlow.jpg" alt="Chasing the Sun" loading="lazy" />
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-date">Coast Journal</span>
+          <h3>Chasing the Sun</h3>
+          <p>Tracking golden light, coastal horizons, and the shifting texture of the NSW shoreline at first light.</p>
+          <span class="read-more">Read Story &rarr;</span>
+        </div>
+      </a>
+      <a href="after-the-storm.html" class="blog-card">
+        <div class="blog-card-img">
+          <img src="../images/urban/melbourne/DSC06716.jpg" alt="After the Storm" loading="lazy" />
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-date">Visual Essay</span>
+          <h3>After the Storm</h3>
+          <p>Quiet reflections, damp bitumen, and high-contrast clearing skies following a coastal squall.</p>
+          <span class="read-more">Read Story &rarr;</span>
+        </div>
+      </a>
+      <a href="the-morning-after.html" class="blog-card">
+        <div class="blog-card-img">
+          <img src="../images/natural-world/flowers/DSC04797_artSinclair.jpg" alt="The Morning After" loading="lazy" />
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-date">Field Notes</span>
+          <h3>The Morning After</h3>
+          <p>Filtered morning light, subtle environmental stillness, and macro botanical textures.</p>
+          <span class="read-more">Read Story &rarr;</span>
+        </div>
+      </a>
+      <a href="when-the-hill-turned-orange.html" class="blog-card">
+        <div class="blog-card-img">
+          <img src="../images/travel/italy/DSC05000.jpg" alt="When the Hill Turned Orange" loading="lazy" />
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-date">Photo Essay</span>
+          <h3>When the Hill Turned Orange</h3>
+          <p>Warm late-afternoon glow washing across ridgelines, headlands, and distant landscapes.</p>
+          <span class="read-more">Read Story &rarr;</span>
+        </div>
+      </a>
     </div>
   </main>
 
   <footer>
-    <p>© 2026 Mark Sinclair Photography. Hosted on GitHub Pages.</p>
+    <p>&copy; 2026 Mark Sinclair Photography. Hosted on GitHub Pages.</p>
   </footer>
+
 </body>
 </html>
