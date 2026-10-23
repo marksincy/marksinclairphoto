@@ -3,281 +3,309 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Central Coast Directory | Mark Sinclair Photography</title>
+  <title>Central Coast Locations | Mark Sinclair Photography</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css" />
   <style>
-    :root {
-      --bg: #0d0e11;
-      --card-bg: #14161b;
-      --surface: #1b1e25;
-      --text: #f0f2f5;
-      --text-muted: #8b92a1;
-      --accent: #d4a373;
-      --border: rgba(255, 255, 255, 0.08);
-      --max-width: 1400px;
-      --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      background-color: var(--bg);
-      color: var(--text);
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      line-height: 1.6;
-    }
-    header {
-      position: sticky; top: 0; z-index: 100;
-      backdrop-filter: blur(12px);
-      background-color: rgba(13, 14, 17, 0.85);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-container {
-      max-width: var(--max-width); margin: 0 auto;
-      padding: 1.25rem 2rem; display: flex;
-      justify-content: space-between; align-items: center;
-    }
-    .logo {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: 1.35rem; font-weight: 600;
-      text-decoration: none; color: var(--text);
-    }
-    .logo span { color: var(--accent); }
-    nav ul { display: flex; list-style: none; gap: 2rem; }
-    nav a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: var(--transition); }
-    nav a:hover, nav a.active { color: var(--text); }
-    .gallery-header {
-      max-width: var(--max-width); margin: 0 auto;
-      padding: 4.5rem 2rem 2.5rem; display: flex;
-      flex-direction: column; gap: 0.75rem;
-      border-bottom: 1px solid var(--border);
-    }
-    .breadcrumbs {
-      font-size: 0.8rem; text-transform: uppercase;
-      letter-spacing: 0.1em; color: var(--accent); text-decoration: none;
-    }
-    .gallery-header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.4rem, 4vw, 3.5rem); font-weight: 400;
-    }
-    .gallery-header p { color: var(--text-muted); max-width: 680px; font-size: 1.05rem; }
-    .gallery-container { max-width: var(--max-width); margin: 0 auto; padding: 3.5rem 2rem 6rem; }
-    .gallery-grid {
+    .gallery-container { padding-top: 2.5rem; }
+    .showcase-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 1.75rem;
     }
-    .photo-card {
-      background-color: var(--card-bg); border-radius: 8px;
-      overflow: hidden; border: 1px solid var(--border);
-      transition: var(--transition);
+    .portfolio-tile {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      aspect-ratio: 16 / 11;
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      text-decoration: none;
+      display: block;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, box-shadow 0.35s ease;
     }
-    .photo-card:hover {
-      transform: translateY(-4px); border-color: rgba(255, 255, 255, 0.25);
+    .portfolio-tile:hover {
+      transform: translateY(-5px);
+      border-color: rgba(255, 255, 255, 0.3);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
     }
-    .img-wrapper { width: 100%; aspect-ratio: 4 / 3; overflow: hidden; background-color: var(--surface); }
-    .img-wrapper img {
-      width: 100%; height: 100%; object-fit: cover;
-      display: block; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    .tile-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .photo-card:hover img { transform: scale(1.03); }
-    .photo-meta {
-      padding: 1.25rem; display: flex;
-      justify-content: space-between; align-items: center;
+    .portfolio-tile:hover .tile-img { transform: scale(1.05); }
+    .tile-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10, 11, 14, 0.94) 0%, rgba(10, 11, 14, 0.35) 55%, rgba(10, 11, 14, 0.05) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.85rem;
+      transition: background 0.35s ease;
     }
-    .photo-meta h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 400; }
-    .photo-gear {
-      font-size: 0.75rem; color: var(--accent);
-      border: 1px solid rgba(212, 163, 115, 0.25);
-      padding: 0.2rem 0.6rem; border-radius: 4px;
+    .portfolio-tile:hover .tile-overlay {
+      background: linear-gradient(to top, rgba(10, 11, 14, 0.98) 0%, rgba(10, 11, 14, 0.45) 60%, rgba(10, 11, 14, 0.1) 100%);
     }
-    /* Lightbox Modal */
-    .lightbox {
-      position: fixed; inset: 0; background: rgba(8, 9, 11, 0.96);
-      backdrop-filter: blur(15px); z-index: 1000; display: none;
-      align-items: center; justify-content: center; padding: 2rem;
+    .tile-tag {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      margin-bottom: 0.35rem;
+      font-weight: 500;
     }
-    .lightbox.active { display: flex; }
-    .lightbox-content { max-width: 90vw; max-height: 88vh; display: flex; flex-direction: column; align-items: center; }
-    .lightbox-content img { max-width: 100%; max-height: 80vh; object-fit: contain; border-radius: 4px; }
-    .lightbox-caption { margin-top: 1rem; text-align: center; }
-    .lightbox-close {
-      position: absolute; top: 2rem; right: 2rem; color: var(--text-muted);
-      font-size: 2rem; cursor: pointer; background: none; border: none;
+    .tile-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: #fff;
+      margin-bottom: 0.3rem;
+      line-height: 1.2;
     }
-    footer { border-top: 1px solid var(--border); padding: 3rem 2rem; text-align: center; color: var(--text-muted); font-size: 0.85rem; }
+    .tile-desc {
+      font-size: 0.83rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+      max-width: 95%;
+    }
+    .tile-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #fff;
+      margin-top: 0.8rem;
+      font-weight: 500;
+      transition: gap 0.25s ease, color 0.25s ease;
+    }
+    .portfolio-tile:hover .tile-action {
+      gap: 0.7rem;
+      color: var(--accent);
+    }
   </style>
 </head>
 <body>
+
   <header>
     <div class="nav-container">
       <a href="../../index.html" class="logo">mark sinclair<span>.</span>photo</a>
       <nav>
         <ul>
-          <li><a href="../../index.html">Portfolio</a></li>
-          <li><a href="../../blog.html">Journal</a></li>
+          <li><a href="../../photo-blog/index.html">Photo Blog</a></li>
+          <li><a href="../../my-coast-blog/index.html">My Coast Blog</a></li>
+          <li>
+            <a href="../../galleries/central-coast/index.html">Central Coast ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="../../galleries/central-coast/chittaway-bay.html">Chittaway Bay</a></li>
+              <li><a href="../../galleries/central-coast/copacabana.html">Copacabana</a></li>
+              <li><a href="../../galleries/central-coast/girrakool.html">Girrakool</a></li>
+              <li><a href="../../galleries/central-coast/koolewong.html">Koolewong</a></li>
+              <li><a href="../../galleries/central-coast/morisset.html">Morisset Abandoned Hospital</a></li>
+              <li><a href="../../galleries/central-coast/mt-wondabyne.html">Mt Wondabyne</a></li>
+              <li><a href="../../galleries/central-coast/pink-caves.html">Pink Caves</a></li>
+              <li><a href="../../galleries/central-coast/soldiers-beach.html">Soldiers Beach</a></li>
+              <li><a href="../../galleries/central-coast/somersby-falls.html">Somersby Falls</a></li>
+              <li><a href="../../galleries/central-coast/tascott.html">Tascott</a></li>
+              <li><a href="../../galleries/central-coast/toowoon-bay.html">Toowoon Bay</a></li>
+              <li><a href="../../galleries/central-coast/woy-woy.html">Woy Woy</a></li>
+              <li><a href="../../galleries/central-coast/yarramalong.html">Yarramalong</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="../../galleries/travel/index.html">Travel ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="../../galleries/travel/england.html">England</a></li>
+              <li><a href="../../galleries/travel/fiji.html">Fiji</a></li>
+              <li><a href="../../galleries/travel/france.html">France</a></li>
+              <li><a href="../../galleries/travel/italy.html">Italy</a></li>
+              <li><a href="../../galleries/travel/singapore.html">Singapore</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="../../galleries/urban/index.html">Urban ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="../../galleries/urban/london.html">London</a></li>
+              <li><a href="../../galleries/urban/melbourne.html">Melbourne</a></li>
+              <li><a href="../../galleries/urban/sydney.html">Sydney</a></li>
+              <li><a href="../../galleries/urban/paris.html">Paris</a></li>
+              <li><a href="../../galleries/urban/venice.html">Venice</a></li>
+              <li><a href="../../galleries/urban/street-art.html">Street Art</a></li>
+            </ul>
+          </li>
+          <li><a href="../../galleries/architecture.html">Architecture</a></li>
+          <li>
+            <a href="#">Natural World ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="../../galleries/natural-world/flowers.html">Flowers</a></li>
+              <li><a href="../../galleries/natural-world/birds.html">Birds</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">Night ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="../../galleries/night/astro.html">Astro</a></li>
+              <li><a href="../../galleries/night/urban.html">Urban</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">Events ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="../../galleries/events/brickman-lego.html">Brickman Lego</a></li>
+              <li><a href="../../galleries/events/cars-coffee.html">Central Coast Cars & Coffee</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">Sport ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="../../galleries/sport/central-coast-mariners.html">Central Coast Mariners</a></li>
+            </ul>
+          </li>
+          <li><a href="../../about.html">About</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <section class="gallery-header">
-    <a href="../../index.html" class="breadcrumbs">&larr; Return to Overview</a>
-    <h1>Central Coast Directory</h1>
-    <p>Dedicated location archives across the bays, headlands, waterways, and ocean beaches of the NSW Central Coast.</p>
+  <section class="page-header">
+    <a href="../../index.html" class="breadcrumbs">&larr; Return to Home</a>
+    <h1>Central Coast Locations</h1>
+    <p>Coastal rock shelves, tidal estuaries, and headlands across 13 regional locations.</p>
   </section>
 
   <main class="gallery-container">
-    <div class="gallery-grid">
+    <div class="showcase-grid">
       
-      <article class="photo-card">
-        <a href="chittaway-bay.html" style="text-decoration: none; color: inherit;">
-          <div class="img-wrapper">
-            <img src="../../images/central-coast/chittaway-bay/DSC04944Sinclair.jpg" alt="Chittaway Bay" loading="lazy" />
-          </div>
-          <div class="photo-meta">
-            <h3>Chittaway Bay</h3>
-            <span class="photo-gear">Explore Location &rarr;</span>
-          </div>
-        </a>
-      </article>
-      <article class="photo-card">
-        <a href="copacabana.html" style="text-decoration: none; color: inherit;">
-          <div class="img-wrapper">
-            <img src="../../images/central-coast/copacabana/DSC07345.jpg" alt="Copacabana" loading="lazy" />
-          </div>
-          <div class="photo-meta">
-            <h3>Copacabana</h3>
-            <span class="photo-gear">Explore Location &rarr;</span>
-          </div>
-        </a>
-      </article>
-      <article class="photo-card">
-        <a href="girrakool.html" style="text-decoration: none; color: inherit;">
-          <div class="img-wrapper">
-            <img src="../../images/central-coast/girrakool/GirrakoolFall.jpg" alt="Girrakool" loading="lazy" />
-          </div>
-          <div class="photo-meta">
-            <h3>Girrakool</h3>
-            <span class="photo-gear">Explore Location &rarr;</span>
-          </div>
-        </a>
-      </article>
-      <article class="photo-card">
-        <a href="koolewong.html" style="text-decoration: none; color: inherit;">
-          <div class="img-wrapper">
-            <img src="../../images/central-coast/koolewong-cover.jpg" alt="Koolewong" loading="lazy" />
-          </div>
-          <div class="photo-meta">
-            <h3>Koolewong</h3>
-            <span class="photo-gear">Explore Location &rarr;</span>
-          </div>
-        </a>
-      </article>
-      <article class="photo-card">
-        <a href="morisset.html" style="text-decoration: none; color: inherit;">
-          <div class="img-wrapper">
-            <img src="../../images/central-coast/morisset/20210109_003908148_iOS.jpg" alt="Morisset" loading="lazy" />
-          </div>
-          <div class="photo-meta">
-            <h3>Morisset</h3>
-            <span class="photo-gear">Explore Location &rarr;</span>
-          </div>
-        </a>
-      </article>
-      <article class="photo-card">
-        <a href="mt-wondabyne.html" style="text-decoration: none; color: inherit;">
-          <div class="img-wrapper">
-            <img src="../../images/central-coast/mt-wondabyne/DSC08308.jpg" alt="Mt Wondabyne" loading="lazy" />
-          </div>
-          <div class="photo-meta">
-            <h3>Mt Wondabyne</h3>
-            <span class="photo-gear">Explore Location &rarr;</span>
-          </div>
-        </a>
-      </article>
-      <article class="photo-card">
-        <a href="pink-caves.html" style="text-decoration: none; color: inherit;">
-          <div class="img-wrapper">
-            <img src="../../images/central-coast/pink-caves/DSCF0781.jpg" alt="Pink Caves" loading="lazy" />
-          </div>
-          <div class="photo-meta">
-            <h3>Pink Caves</h3>
-            <span class="photo-gear">Explore Location &rarr;</span>
-          </div>
-        </a>
-      </article>
-      <article class="photo-card">
-        <a href="soldiers-beach.html" style="text-decoration: none; color: inherit;">
-          <div class="img-wrapper">
-            <img src="../../images/central-coast/soldiers-beach/DSC06432.jpg" alt="Soldiers Beach" loading="lazy" />
-          </div>
-          <div class="photo-meta">
-            <h3>Soldiers Beach</h3>
-            <span class="photo-gear">Explore Location &rarr;</span>
-          </div>
-        </a>
-      </article>
-      <article class="photo-card">
-        <a href="somersby-falls.html" style="text-decoration: none; color: inherit;">
-          <div class="img-wrapper">
-            <img src="../../images/central-coast/somersby-falls/LowerFalls.jpg" alt="Somersby Falls" loading="lazy" />
-          </div>
-          <div class="photo-meta">
-            <h3>Somersby Falls</h3>
-            <span class="photo-gear">Explore Location &rarr;</span>
-          </div>
-        </a>
-      </article>
-      <article class="photo-card">
-        <a href="tascott.html" style="text-decoration: none; color: inherit;">
-          <div class="img-wrapper">
-            <img src="../../images/central-coast/tascott/DSC01131.jpg" alt="Tascott" loading="lazy" />
-          </div>
-          <div class="photo-meta">
-            <h3>Tascott</h3>
-            <span class="photo-gear">Explore Location &rarr;</span>
-          </div>
-        </a>
-      </article>
-      <article class="photo-card">
-        <a href="toowoon-bay.html" style="text-decoration: none; color: inherit;">
-          <div class="img-wrapper">
-            <img src="../../images/central-coast/toowoon-bay/DSCF0748.jpg" alt="Toowoon Bay" loading="lazy" />
-          </div>
-          <div class="photo-meta">
-            <h3>Toowoon Bay</h3>
-            <span class="photo-gear">Explore Location &rarr;</span>
-          </div>
-        </a>
-      </article>
-      <article class="photo-card">
-        <a href="woy-woy.html" style="text-decoration: none; color: inherit;">
-          <div class="img-wrapper">
-            <img src="../../images/central-coast/woy-woy/DSC00054.jpg" alt="Woy Woy" loading="lazy" />
-          </div>
-          <div class="photo-meta">
-            <h3>Woy Woy</h3>
-            <span class="photo-gear">Explore Location &rarr;</span>
-          </div>
-        </a>
-      </article>
-      <article class="photo-card">
-        <a href="yarramalong.html" style="text-decoration: none; color: inherit;">
-          <div class="img-wrapper">
-            <img src="../../images/central-coast/yarramalong/Yarramalong_completeSinclair.jpg" alt="Yarramalong" loading="lazy" />
-          </div>
-          <div class="photo-meta">
-            <h3>Yarramalong</h3>
-            <span class="photo-gear">Explore Location &rarr;</span>
-          </div>
-        </a>
-      </article>
+      <a href="chittaway-bay.html" class="portfolio-tile">
+        <img class="tile-img" src="../../images/central-coast/chittaway-bay/DSC04944Sinclair.jpg" alt="Chittaway Bay" loading="lazy" />
+        <div class="tile-overlay">
+          <span class="tile-tag">Central Coast Series</span>
+          <h2 class="tile-title">Chittaway Bay</h2>
+          <p class="tile-desc">Estuary light, pelicans, and quiet foreshore trails along Tuggerah Lake.</p>
+          <span class="tile-action">View Gallery &rarr;</span>
+        </div>
+      </a>
+      <a href="copacabana.html" class="portfolio-tile">
+        <img class="tile-img" src="../../images/central-coast/copacabana/DSC07345.jpg" alt="Copacabana" loading="lazy" />
+        <div class="tile-overlay">
+          <span class="tile-tag">Central Coast Series</span>
+          <h2 class="tile-title">Copacabana</h2>
+          <p class="tile-desc">Headland views, ocean swells, and golden hour along the coast.</p>
+          <span class="tile-action">View Gallery &rarr;</span>
+        </div>
+      </a>
+      <a href="girrakool.html" class="portfolio-tile">
+        <img class="tile-img" src="../../images/central-coast/girrakool/cover.jpg" alt="Girrakool" loading="lazy" />
+        <div class="tile-overlay">
+          <span class="tile-tag">Central Coast Series</span>
+          <h2 class="tile-title">Girrakool</h2>
+          <p class="tile-desc">Sandstone cascades, rainforest gullies, and ancient engravings.</p>
+          <span class="tile-action">View Gallery &rarr;</span>
+        </div>
+      </a>
+      <a href="koolewong.html" class="portfolio-tile">
+        <img class="tile-img" src="../../images/central-coast/koolewong/DSC01131.jpg" alt="Koolewong" loading="lazy" />
+        <div class="tile-overlay">
+          <span class="tile-tag">Central Coast Series</span>
+          <h2 class="tile-title">Koolewong</h2>
+          <p class="tile-desc">Waterfront reflections, calm marinas, and resilience across Brisbane Water.</p>
+          <span class="tile-action">View Gallery &rarr;</span>
+        </div>
+      </a>
+      <a href="morisset.html" class="portfolio-tile">
+        <img class="tile-img" src="../../images/central-coast/morisset/20210109_003908148_iOS.jpg" alt="Morisset Abandoned Hospital" loading="lazy" />
+        <div class="tile-overlay">
+          <span class="tile-tag">Central Coast Series</span>
+          <h2 class="tile-title">Morisset Abandoned Hospital</h2>
+          <p class="tile-desc">Weathered architecture, encroaching bushland, and quiet history.</p>
+          <span class="tile-action">View Gallery &rarr;</span>
+        </div>
+      </a>
+      <a href="mt-wondabyne.html" class="portfolio-tile">
+        <img class="tile-img" src="../../images/central-coast/mt-wondabyne/DSC08308.jpg" alt="Mt Wondabyne" loading="lazy" />
+        <div class="tile-overlay">
+          <span class="tile-tag">Central Coast Series</span>
+          <h2 class="tile-title">Mt Wondabyne</h2>
+          <p class="tile-desc">Granite peaks, panoramic ridgelines, and remote dark-sky trails.</p>
+          <span class="tile-action">View Gallery &rarr;</span>
+        </div>
+      </a>
+      <a href="pink-caves.html" class="portfolio-tile">
+        <img class="tile-img" src="../../images/central-coast/pink-caves/DSCF0781.jpg" alt="Pink Caves" loading="lazy" />
+        <div class="tile-overlay">
+          <span class="tile-tag">Central Coast Series</span>
+          <h2 class="tile-title">Pink Caves</h2>
+          <p class="tile-desc">Vibrant coastal sandstone formations and tidal rock shelves.</p>
+          <span class="tile-action">View Gallery &rarr;</span>
+        </div>
+      </a>
+      <a href="soldiers-beach.html" class="portfolio-tile">
+        <img class="tile-img" src="../../images/central-coast/soldiers-beach/DSC06432.jpg" alt="Soldiers Beach" loading="lazy" />
+        <div class="tile-overlay">
+          <span class="tile-tag">Central Coast Series</span>
+          <h2 class="tile-title">Soldiers Beach</h2>
+          <p class="tile-desc">Dramatic rock shelves, rolling surf, and sunrise horizons near Norah Head.</p>
+          <span class="tile-action">View Gallery &rarr;</span>
+        </div>
+      </a>
+      <a href="somersby-falls.html" class="portfolio-tile">
+        <img class="tile-img" src="../../images/central-coast/somersby-falls/cover.jpg" alt="Somersby Falls" loading="lazy" />
+        <div class="tile-overlay">
+          <span class="tile-tag">Central Coast Series</span>
+          <h2 class="tile-title">Somersby Falls</h2>
+          <p class="tile-desc">Fern-lined tiers, misty cascades, and filtered forest light.</p>
+          <span class="tile-action">View Gallery &rarr;</span>
+        </div>
+      </a>
+      <a href="tascott.html" class="portfolio-tile">
+        <img class="tile-img" src="../../images/central-coast/tascott/DSC06527.jpg" alt="Tascott" loading="lazy" />
+        <div class="tile-overlay">
+          <span class="tile-tag">Central Coast Series</span>
+          <h2 class="tile-title">Tascott</h2>
+          <p class="tile-desc">Morning mist, railway reflections, and still waters on Brisbane Water.</p>
+          <span class="tile-action">View Gallery &rarr;</span>
+        </div>
+      </a>
+      <a href="toowoon-bay.html" class="portfolio-tile">
+        <img class="tile-img" src="../../images/central-coast/toowoon-bay/DSCF0748.jpg" alt="Toowoon Bay" loading="lazy" />
+        <div class="tile-overlay">
+          <span class="tile-tag">Central Coast Series</span>
+          <h2 class="tile-title">Toowoon Bay</h2>
+          <p class="tile-desc">Protected turquoise waters, gentle reefs, and pastel skies.</p>
+          <span class="tile-action">View Gallery &rarr;</span>
+        </div>
+      </a>
+      <a href="woy-woy.html" class="portfolio-tile">
+        <img class="tile-img" src="../../images/central-coast/woy-woy/DSC00054.jpg" alt="Woy Woy" loading="lazy" />
+        <div class="tile-overlay">
+          <span class="tile-tag">Central Coast Series</span>
+          <h2 class="tile-title">Woy Woy</h2>
+          <p class="tile-desc">Channel jetties, pelican perches, and daily life along the peninsula.</p>
+          <span class="tile-action">View Gallery &rarr;</span>
+        </div>
+      </a>
+      <a href="yarramalong.html" class="portfolio-tile">
+        <img class="tile-img" src="../../images/central-coast/yarramalong/Yarramalong_completeSinclair.jpg" alt="Yarramalong" loading="lazy" />
+        <div class="tile-overlay">
+          <span class="tile-tag">Central Coast Series</span>
+          <h2 class="tile-title">Yarramalong</h2>
+          <p class="tile-desc">Rural valleys, misty paddocks, and country backroads.</p>
+          <span class="tile-action">View Gallery &rarr;</span>
+        </div>
+      </a>
     </div>
   </main>
 
   <footer>
-    <p>&copy; 2026 Mark Sinclair Photography. Central Coast Series.</p>
+    <p>&copy; 2026 Mark Sinclair Photography. Hosted on GitHub Pages.</p>
   </footer>
+
 </body>
 </html>
