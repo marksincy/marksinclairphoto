@@ -8,6 +8,96 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../styles.css" />
+
+<style id="lightbox-nav-fix">
+  .lightbox {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(8, 9, 11, 0.96) !important;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    z-index: 9999 !important;
+  }
+  .lightbox.active {
+    display: flex !important;
+  }
+  .lightbox-prev, .lightbox-next {
+    position: fixed !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 56px !important;
+    height: 56px !important;
+    background: rgba(20, 22, 28, 0.75) !important;
+    color: #f0f2f5 !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 50% !important;
+    font-size: 2rem !important;
+    font-weight: 300 !important;
+    line-height: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    user-select: none !important;
+    transition: all 0.25s ease !important;
+    z-index: 10001 !important;
+    padding: 0 !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+  }
+  .lightbox-prev:hover, .lightbox-next:hover {
+    background: rgba(212, 163, 115, 0.9) !important;
+    color: #0d0e11 !important;
+    border-color: transparent !important;
+    transform: translateY(-50%) scale(1.08) !important;
+  }
+  .lightbox-prev {
+    left: 2rem !important;
+    right: auto !important;
+  }
+  .lightbox-next {
+    right: 2rem !important;
+    left: auto !important;
+  }
+  .lightbox-close {
+    position: fixed !important;
+    top: 2rem !important;
+    right: 2rem !important;
+    font-size: 2.2rem !important;
+    background: none !important;
+    border: none !important;
+    color: #8b92a1 !important;
+    cursor: pointer !important;
+    z-index: 10002 !important;
+    transition: color 0.2s ease !important;
+  }
+  .lightbox-close:hover {
+    color: #ffffff !important;
+  }
+  .lightbox-counter {
+    font-size: 0.85rem !important;
+    color: #d4a373 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.1em !important;
+    margin-top: 0.5rem !important;
+    font-weight: 500 !important;
+  }
+  @media (max-width: 768px) {
+    .lightbox-prev, .lightbox-next {
+      width: 44px !important;
+      height: 44px !important;
+      font-size: 1.5rem !important;
+    }
+    .lightbox-prev { left: 0.75rem !important; }
+    .lightbox-next { right: 0.75rem !important; }
+    .lightbox-close { top: 1rem !important; right: 1rem !important; }
+  }
+</style>
+
 </head>
 <body>
 
