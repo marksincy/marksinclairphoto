@@ -224,45 +224,141 @@
     </div>
   </main>
 
-  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
     <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+    <button class="lightbox-prev" onclick="changeLightboxImage(-1, event)" aria-label="Previous photo">&#10094;</button>
+    <button class="lightbox-next" onclick="changeLightboxImage(1, event)" aria-label="Next photo">&#10095;</button>
     <div class="lightbox-content">
       <img id="lightboxImg" src="" alt="Full preview" />
       <div class="lightbox-caption">
         <h4 id="lightboxTitle"></h4>
         <p id="lightboxSub"></p>
+        <div id="lightboxCounter" class="lightbox-counter"></div>
       </div>
     </div>
+  </div>
   </div>
 
   <footer>
     <p>&copy; 2026 Mark Sinclair Photography. Hosted on GitHub Pages.</p>
   </footer>
 
-  <script>
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightboxImg');
-    const lightboxTitle = document.getElementById('lightboxTitle');
-    const lightboxSub = document.getElementById('lightboxSub');
+    <script>
+    let currentGalleryItems = [];
+    let currentImageIndex = 0;
 
+    function initGalleryItems() {
+      currentGalleryItems = [];
+      const cards = document.querySelectorAll('.gallery-grid .photo-card');
+      cards.forEach((card, idx) => {
+        const img = card.querySelector('img');
+        if (!img) return;
+        const src = card.getAttribute('data-full') || img.getAttribute('src') || '';
+        const titleEl = card.querySelector('.photo-meta h3');
+        const subEl = card.querySelector('.photo-meta p') || card.querySelector('.photo-meta .photo-gear') || card.querySelector('.photo-meta span');
+        const title = titleEl ? titleEl.textContent.strip ? titleEl.textContent.strip() : titleEl.textContent.trim() : '';
+        const sub = subEl ? subEl.textContent.trim() : '';
+
+        currentGalleryItems.push({ src, title, sub });
+
+        card.setAttribute('data-index', idx);
+        card.addEventListener('click', (e) => {
+          e.preventDefault();
+          openLightboxIndex(idx);
+        });
+      });
+    }
+
+    function openLightboxIndex(idx) {
+      if (!currentGalleryItems.length) initGalleryItems();
+      if (!currentGalleryItems.length) return;
+
+      if (idx < 0) idx = currentGalleryItems.length - 1;
+      if (idx >= currentGalleryItems.length) idx = 0;
+
+      currentImageIndex = idx;
+      const item = currentGalleryItems[currentImageIndex];
+
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightboxImg');
+      const lightboxTitle = document.getElementById('lightboxTitle');
+      const lightboxSub = document.getElementById('lightboxSub');
+      const lightboxCounter = document.getElementById('lightboxCounter');
+
+      if (lightboxImg) lightboxImg.src = item.src;
+      if (lightboxTitle) lightboxTitle.textContent = item.title;
+      if (lightboxSub) lightboxSub.textContent = item.sub;
+      if (lightboxCounter) lightboxCounter.textContent = `${currentImageIndex + 1} / ${currentGalleryItems.length}`;
+
+      if (lightbox) {
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function changeLightboxImage(direction, e) {
+      if (e) e.stopPropagation();
+      openLightboxIndex(currentImageIndex + direction);
+    }
+
+    // Retain compatibility with existing onclick attributes
     function openLightbox(src, title, sub) {
-      lightboxImg.src = src;
-      lightboxTitle.textContent = title;
-      lightboxSub.textContent = sub;
-      lightbox.classList.add('active');
-      document.body.style.overflow = 'hidden';
+      if (!currentGalleryItems.length) initGalleryItems();
+      const cleanTarget = src.split('?')[0].split('/').pop();
+      const matchIdx = currentGalleryItems.findIndex(item => item.src.split('?')[0].split('/').pop() === cleanTarget);
+      if (matchIdx !== -1) {
+        openLightboxIndex(matchIdx);
+      } else {
+        openLightboxIndex(0);
+      }
     }
 
     function closeLightbox(e) {
-      if (!e || e.target === lightbox || e.target.classList.contains('lightbox-close')) {
-        lightbox.classList.remove('active');
+      if (!e || e.target === document.getElementById('lightbox') || (e.target && e.target.classList.contains('lightbox-close'))) {
+        const lightbox = document.getElementById('lightbox');
+        if (lightbox) lightbox.classList.remove('active');
         document.body.style.overflow = 'auto';
       }
     }
 
+    // Keyboard controls: Left/Right arrows and Escape
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeLightbox();
+      const lightbox = document.getElementById('lightbox');
+      if (!lightbox || !lightbox.classList.contains('active')) return;
+
+      if (e.key === 'ArrowLeft') {
+        changeLightboxImage(-1);
+      } else if (e.key === 'ArrowRight') {
+        changeLightboxImage(1);
+      } else if (e.key === 'Escape') {
+        closeLightbox();
+      }
     });
+
+    // Touch swipe support for mobile/tablets
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    document.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    document.addEventListener('touchend', (e) => {
+      const lightbox = document.getElementById('lightbox');
+      if (!lightbox || !lightbox.classList.contains('active')) return;
+      touchEndX = e.changedTouches[0].screenX;
+      if (touchEndX < touchStartX - 50) {
+        changeLightboxImage(1); // Swipe left -> Next
+      }
+      if (touchEndX > touchStartX + 50) {
+        changeLightboxImage(-1); // Swipe right -> Previous
+      }
+    }, { passive: true });
+
+    document.addEventListener('DOMContentLoaded', initGalleryItems);
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      initGalleryItems();
+    }
   </script>
 </body>
 </html>
