@@ -296,3 +296,5 @@ footer {
 .lightbox-prev { left: 2rem !important; }
 .lightbox-next { right: 2rem !important; }
 .lightbox-counter { font-size: 0.85rem; color: #d4a373; margin-top: 0.5rem; letter-spacing: 0.1em; }
+
+.image-caption { font-style: italic !important; color: var(--text-muted); font-size: 0.85rem; text-align: center; margin-top: 0.75rem; }
